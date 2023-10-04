@@ -1,0 +1,405 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PenShop
+build_property.RootNamespace = PenShop
+build_property.ProjectDir = /home/kolia/projects/web/
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/kolia/projects/web
+build_property._RazorSourceGeneratorDebug = 
+
+[/home/kolia/projects/web/Views/Accessory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjZXNzb3J5L0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Administrator/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRvci9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Administrator/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRvci9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Administrator/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRvci9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Administrator/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRvci9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Administrator/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRvci9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/CartridgeStandard/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FydHJpZGdlU3RhbmRhcmQvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/CartridgeStandard/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FydHJpZGdlU3RhbmRhcmQvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/CartridgeStandard/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FydHJpZGdlU3RhbmRhcmQvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/CartridgeStandard/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FydHJpZGdlU3RhbmRhcmQvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/CartridgeStandard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FydHJpZGdlU3RhbmRhcmQvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Converter/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29udmVydGVyL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Converter/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29udmVydGVyL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Converter/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29udmVydGVyL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Converter/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29udmVydGVyL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Converter/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29udmVydGVyL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Customer/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Customer/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Customer/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Customer/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPen/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW4vQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPen/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW4vRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPen/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW4vRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPen/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW4vRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPen/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPenOrder/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW5PcmRlci9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPenOrder/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW5PcmRlci9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPenOrder/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW5PcmRlci9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPenOrder/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW5PcmRlci9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPenOrder/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW5PcmRlci9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/GeneralProductOrder/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR2VuZXJhbFByb2R1Y3RPcmRlci9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/GeneralProductOrder/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR2VuZXJhbFByb2R1Y3RPcmRlci9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/GeneralProductOrder/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR2VuZXJhbFByb2R1Y3RPcmRlci9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/GeneralProductOrder/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR2VuZXJhbFByb2R1Y3RPcmRlci9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/GeneralProductOrder/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR2VuZXJhbFByb2R1Y3RPcmRlci9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Ink/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkBottle/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQm90dGxlL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkBottle/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQm90dGxlL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkBottle/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQm90dGxlL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkBottle/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQm90dGxlL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkBottle/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQm90dGxlL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkCartridge/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ2FydHJpZGdlL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkCartridge/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ2FydHJpZGdlL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkCartridge/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ2FydHJpZGdlL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkCartridge/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ2FydHJpZGdlL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkCartridge/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ2FydHJpZGdlL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkColour/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ29sb3VyL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkColour/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ29sb3VyL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkColour/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ29sb3VyL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkColour/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ29sb3VyL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkColour/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ29sb3VyL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Material/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWF0ZXJpYWwvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Material/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWF0ZXJpYWwvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Material/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWF0ZXJpYWwvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Material/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWF0ZXJpYWwvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Material/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWF0ZXJpYWwvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Nib/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Nib/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Nib/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Nib/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Nib/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibAccessory/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliQWNjZXNzb3J5L0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibAccessory/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliQWNjZXNzb3J5L0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibAccessory/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliQWNjZXNzb3J5L0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibAccessory/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliQWNjZXNzb3J5L0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibAccessory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliQWNjZXNzb3J5L0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibMaterial/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliTWF0ZXJpYWwvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibMaterial/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliTWF0ZXJpYWwvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibMaterial/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliTWF0ZXJpYWwvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibMaterial/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliTWF0ZXJpYWwvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/NibMaterial/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliTWF0ZXJpYWwvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Order/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Order/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Order/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Order/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Order/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Pen/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVuL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/ProductOrder/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdE9yZGVyL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/RollerballPen/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9sbGVyYmFsbFBlbi9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/RollerballPen/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9sbGVyYmFsbFBlbi9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/RollerballPen/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9sbGVyYmFsbFBlbi9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/RollerballPen/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9sbGVyYmFsbFBlbi9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/RollerballPen/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9sbGVyYmFsbFBlbi9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Stand/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhbmQvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Stand/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhbmQvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Stand/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhbmQvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Stand/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhbmQvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Stand/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhbmQvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-4bqmq22dna
