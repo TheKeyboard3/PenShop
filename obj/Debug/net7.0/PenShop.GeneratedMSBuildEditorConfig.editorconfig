@@ -80,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29udmVydGVyL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kolia/projects/web/Views/Converter/ProductCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29udmVydGVyL1Byb2R1Y3RDYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kolia/projects/web/Views/Customer/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3VzdG9tZXIvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -118,6 +122,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/kolia/projects/web/Views/FountainPen/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/FountainPen/ProductCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRm91bnRhaW5QZW4vUHJvZHVjdENhcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/kolia/projects/web/Views/FountainPenOrder/Create.cshtml]
@@ -192,6 +200,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQm90dGxlL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kolia/projects/web/Views/InkBottle/ProductCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQm90dGxlL1Byb2R1Y3RDYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kolia/projects/web/Views/InkCartridge/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ2FydHJpZGdlL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -210,6 +222,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/kolia/projects/web/Views/InkCartridge/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ2FydHJpZGdlL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/InkCartridge/ProductCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5rQ2FydHJpZGdlL1Byb2R1Y3RDYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/kolia/projects/web/Views/InkColour/Create.cshtml]
@@ -292,6 +308,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliQWNjZXNzb3J5L0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kolia/projects/web/Views/NibAccessory/ProductCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliQWNjZXNzb3J5L1Byb2R1Y3RDYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kolia/projects/web/Views/NibMaterial/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmliTWF0ZXJpYWwvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -364,6 +384,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9sbGVyYmFsbFBlbi9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kolia/projects/web/Views/RollerballPen/ProductCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9sbGVyYmFsbFBlbi9Qcm9kdWN0Q2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kolia/projects/web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -390,6 +414,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/kolia/projects/web/Views/Stand/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhbmQvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kolia/projects/web/Views/Stand/ProductCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhbmQvUHJvZHVjdENhcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/kolia/projects/web/Views/_ViewImports.cshtml]

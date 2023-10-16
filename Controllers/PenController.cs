@@ -13,17 +13,20 @@ namespace PenShop.Controllers
     public class PenController : Controller
     {
         private readonly PenShopContext _context;
+        private readonly FountainPenController _fountainPenController;
+        private readonly RollerballPenController _rollerballPenController;
 
-        public PenController(PenShopContext context)
+        public PenController(PenShopContext context, FountainPenController fountainPenController, RollerballPenController rollerballPenController)
         {
             _context = context;
+            _fountainPenController = fountainPenController;
+            _rollerballPenController = rollerballPenController;
         }
 
         // GET: Pen
         public async Task<IActionResult> Index()
         {
-            var penShopContext = _context.Pen.Include(p => p.CartridgeStandard).Include(p => p.Material);
-            return View(await penShopContext.ToListAsync());
+            return View(await _context.Pen.Select(x => x.Id).ToListAsync());
         }
 
         // GET: Pen/Details/5
@@ -48,6 +51,38 @@ namespace PenShop.Controllers
 
             if(pen is RollerballPen)
                 return RedirectToAction(nameof(RollerballPenController.Details), nameof(RollerballPen), new {id = id});
+
+            throw new InvalidOperationException();
+        }
+
+        // GET: Pen/Details/5
+        public async Task<IActionResult> ProductCard(int? id)
+        {
+            if (id == null || _context.Pen == null)
+            {
+                return NotFound();
+            }
+
+            var pen = await _context.Pen
+                .Include(p => p.CartridgeStandard)
+                .Include(p => p.Material)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (pen == null)
+            {
+                return NotFound();
+            }
+
+            return await ProductCard(pen);
+        }
+
+        // GET: Pen/Details/5
+        public async Task<IActionResult> ProductCard(Pen pen)
+        {
+            if(pen is FountainPen)
+                return await new FountainPenController(_context).ProductCard((FountainPen)pen);
+
+            if(pen is RollerballPen)
+                return await new RollerballPenController(_context).ProductCard((RollerballPen)pen);
 
             throw new InvalidOperationException();
         }

@@ -22,8 +22,7 @@ namespace PenShop.Controllers
         // GET: NibAccessory
         public async Task<IActionResult> Index()
         {
-            var penShopContext = _context.NibAccessory.Include(n => n.Nib);
-            return View(await penShopContext.ToListAsync());
+            return View(await _context.NibAccessory.Select(x => x.Id).ToListAsync());
         }
 
         // GET: NibAccessory/Details/5
@@ -43,6 +42,31 @@ namespace PenShop.Controllers
             }
 
             return View(nibAccessory);
+        }
+
+        // GET: NibAccessory/ProductCard/5
+        public async Task<IActionResult> ProductCard(int? id)
+        {
+            if (id == null || _context.NibAccessory == null)
+            {
+                return NotFound();
+            }
+
+            var nibAccessory = await _context.NibAccessory
+                .Include(n => n.Nib)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (nibAccessory == null)
+            {
+                return NotFound();
+            }
+
+            return await ProductCard(nibAccessory);
+        }
+
+        // GET: NibAccessory/ProductCard/5
+        public Task<IActionResult> ProductCard(NibAccessory nibAccessory)
+        {
+            return Task.FromResult<IActionResult>(PartialView("/Views/NibAccessory/ProductCard.cshtml", nibAccessory));
         }
 
         // GET: NibAccessory/Create

@@ -22,8 +22,7 @@ namespace PenShop.Controllers
         // GET: Stand
         public async Task<IActionResult> Index()
         {
-            var penShopContext = _context.Stand.Include(s => s.Material);
-            return View(await penShopContext.ToListAsync());
+            return View(await _context.Stand.Select(x => x.Id).ToListAsync());
         }
 
         // GET: Stand/Details/5
@@ -43,6 +42,31 @@ namespace PenShop.Controllers
             }
 
             return View(stand);
+        }
+
+        // GET: Stand/ProductCard/5
+        public async Task<IActionResult> ProductCard(int? id)
+        {
+            if (id == null || _context.Stand == null)
+            {
+                return NotFound();
+            }
+
+            var stand = await _context.Stand
+                .Include(s => s.Material)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (stand == null)
+            {
+                return NotFound();
+            }
+
+            return await ProductCard(stand);
+        }
+
+        // GET: Stand/ProductCard/5
+        public Task<IActionResult> ProductCard(Stand stand)
+        {
+            return Task.FromResult<IActionResult>(PartialView("/Views/Stand/ProductCard.cshtml", stand));
         }
 
         // GET: Stand/Create

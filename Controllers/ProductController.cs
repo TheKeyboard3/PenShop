@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,17 +14,23 @@ namespace PenShop.Controllers
     public class ProductController : Controller
     {
         private readonly PenShopContext _context;
+        private readonly PenController _penController;
+        private readonly InkController _inkController;
+        private readonly AccessoryController _accessoryController;
 
-        public ProductController(PenShopContext context)
+        public ProductController(PenShopContext context, PenController penController, InkController inkController, AccessoryController accessoryController)
         {
             _context = context;
+            _penController = penController;
+            _inkController = inkController;
+            _accessoryController = accessoryController;
         }
 
         // GET: Product
         public async Task<IActionResult> Index()
         {
               return _context.Product != null ? 
-                          View(await _context.Product.ToListAsync()) :
+                          View(await _context.Product.Select(x => x.Id).ToListAsync()) :
                           Problem("Entity set 'PenShopContext.Product'  is null.");
         }
 
@@ -50,6 +57,39 @@ namespace PenShop.Controllers
 
             if(product is Accessory)
                 return RedirectToAction(nameof(AccessoryController.Details), nameof(Accessory), new {id = id});
+
+            throw new InvalidOperationException();
+        }
+
+        // GET: Product/Details/5
+        public async Task<IActionResult> ProductCard(int? id)
+        {
+            if (id == null || _context.Product == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Product
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return await ProductCard(product);
+        }
+
+        // GET: Product/Details/5
+        public async Task<IActionResult> ProductCard(Product product)
+        {
+            if(product is Pen)
+                return await _penController.ProductCard((Pen)product);
+
+            if(product is Ink)
+                return await _inkController.ProductCard((Ink)product);
+
+            if(product is Accessory)
+                return await _accessoryController.ProductCard((Accessory)product);
 
             throw new InvalidOperationException();
         }

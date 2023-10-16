@@ -22,8 +22,7 @@ namespace PenShop.Controllers
         // GET: InkCartridge
         public async Task<IActionResult> Index()
         {
-            var penShopContext = _context.InkCartridge.Include(i => i.Colour).Include(i => i.CartridgeStandard);
-            return View(await penShopContext.ToListAsync());
+            return View(await _context.InkCartridge.Select(x => x.Id).ToListAsync());
         }
 
         // GET: InkCartridge/Details/5
@@ -44,6 +43,32 @@ namespace PenShop.Controllers
             }
 
             return View(inkCartridge);
+        }
+
+        // GET: InkCartridge/ProductCard/5
+        public async Task<IActionResult> ProductCard(int? id)
+        {
+            if (id == null || _context.InkCartridge == null)
+            {
+                return NotFound();
+            }
+
+            var inkCartridge = await _context.InkCartridge
+                .Include(i => i.Colour)
+                .Include(i => i.CartridgeStandard)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (inkCartridge == null)
+            {
+                return NotFound();
+            }
+
+            return await ProductCard(inkCartridge);
+        }
+
+        // GET: InkCartridge/ProductCard/5
+        public Task<IActionResult> ProductCard(InkCartridge inkCartridge)
+        {
+            return Task.FromResult<IActionResult>(PartialView("/Views/InkCartridge/ProductCard.cshtml", inkCartridge));
         }
 
         // GET: InkCartridge/Create

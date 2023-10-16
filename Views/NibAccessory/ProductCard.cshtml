@@ -1,0 +1,60 @@
+@model PenShop.Models.NibAccessory
+
+<div class="col-xl-3">
+    <dl class="row">
+        <dt class = "col-sm-6">
+            Type
+        </dt>
+        <dd class = "col-sm-6">
+            Nib
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            Tip diameter
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Nib.TipDiameter)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Nib.BodyMaterial)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Nib.BodyMaterial.Text)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Nib.TipMaterial)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Nib.TipMaterial.Text)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            <a asp-action="Details" asp-route-id="@Model?.Id">Details</a>
+        </dt>
+        <dd class = "col-sm-6">
+            <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+        </dd>
+    </dl>
+</div>

@@ -1,4 +1,5 @@
 using PenShop.Data;
+using PenShop.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<PenShopContext>(b => b.UseLazyLoadingProxies());
+
+builder.Services.AddScoped<ConverterController>();
+builder.Services.AddScoped<NibAccessoryController>();
+builder.Services.AddScoped<StandController>();
+builder.Services.AddScoped<FountainPenController>();
+builder.Services.AddScoped<RollerballPenController>();
+builder.Services.AddScoped<InkBottleController>();
+builder.Services.AddScoped<InkCartridgeController>();
+
+builder.Services.AddScoped<AccessoryController>();
+builder.Services.AddScoped<PenController>();
+builder.Services.AddScoped<InkController>();
 
 var app = builder.Build();
 

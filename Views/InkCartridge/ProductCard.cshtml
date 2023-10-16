@@ -1,0 +1,60 @@
+@model PenShop.Models.InkCartridge
+
+<div class="col-xl-3">
+    <dl class="row">
+        <dt class = "col-sm-6">
+            Type
+        </dt>
+        <dd class = "col-sm-6">
+            Ink cartridge
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.CartridgeStandard)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.CartridgeStandard.Id)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Colour)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Colour.Name)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-6">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+    </dl>
+    <dl class="row">
+        <dt class = "col-sm-6">
+            <a asp-action="Details" asp-route-id="@Model?.Id">Details</a>
+        </dt>
+        <dd class = "col-sm-6">
+            <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+        </dd>
+    </dl>
+</div>

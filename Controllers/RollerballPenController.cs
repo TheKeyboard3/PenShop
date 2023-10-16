@@ -22,8 +22,7 @@ namespace PenShop.Controllers
         // GET: RollerballPen
         public async Task<IActionResult> Index()
         {
-            var penShopContext = _context.RollerballPen.Include(r => r.CartridgeStandard).Include(r => r.Material);
-            return View(await penShopContext.ToListAsync());
+            return View(await _context.RollerballPen.Select(x => x.Id).ToListAsync());
         }
 
         // GET: RollerballPen/Details/5
@@ -44,6 +43,32 @@ namespace PenShop.Controllers
             }
 
             return View(rollerballPen);
+        }
+
+        // GET: RollerballPen/ProductCard/5
+        public async Task<IActionResult> ProductCard(int? id)
+        {
+            if (id == null || _context.RollerballPen == null)
+            {
+                return NotFound();
+            }
+
+            var rollerballPen = await _context.RollerballPen
+                .Include(r => r.CartridgeStandard)
+                .Include(r => r.Material)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (rollerballPen == null)
+            {
+                return NotFound();
+            }
+
+            return await ProductCard(rollerballPen);
+        }
+
+        // GET: RollerballPen/ProductCard/5
+        public Task<IActionResult> ProductCard(RollerballPen rollerballPen)
+        {
+            return Task.FromResult<IActionResult>(PartialView("/Views/RollerballPen/ProductCard.cshtml", rollerballPen));
         }
 
         // GET: RollerballPen/Create

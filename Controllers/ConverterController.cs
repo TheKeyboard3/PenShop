@@ -22,8 +22,7 @@ namespace PenShop.Controllers
         // GET: Converter
         public async Task<IActionResult> Index()
         {
-            var penShopContext = _context.Converter.Include(c => c.CartridgeStandard);
-            return View(await penShopContext.ToListAsync());
+            return View(await _context.Converter.Select(x => x.Id).ToListAsync());
         }
 
         // GET: Converter/Details/5
@@ -43,6 +42,31 @@ namespace PenShop.Controllers
             }
 
             return View(converter);
+        }
+
+        // GET: Converter/ProductCard/5
+        public async Task<IActionResult> ProductCard(int? id)
+        {
+            if (id == null || _context.Converter == null)
+            {
+                return NotFound();
+            }
+
+            var converter = await _context.Converter
+                .Include(c => c.CartridgeStandard)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (converter == null)
+            {
+                return NotFound();
+            }
+
+            return await ProductCard(converter);
+        }
+
+        // GET: Converter/ProductCard/5
+        public Task<IActionResult> ProductCard(Converter converter)
+        {
+            return Task.FromResult<IActionResult>(PartialView("/Views/Converter/ProductCard.cshtml", converter));
         }
 
         // GET: Converter/Create
