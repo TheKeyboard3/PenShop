@@ -45,6 +45,25 @@ namespace PenShop.Controllers
             return View(inkBottle);
         }
 
+        // GET: InkBottle/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.InkBottle == null)
+            {
+                return NotFound();
+            }
+
+            var inkBottle = await _context.InkBottle
+                .Include(i => i.Colour)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (inkBottle == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(GeneralProductOrderController.Create), nameof(GeneralProductOrder), new {productId = id});
+        }
+
         // GET: InkBottle/ProductCard/5
         public async Task<IActionResult> ProductCard(int? id)
         {
@@ -125,12 +144,14 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var oldInkBottle = await _context.InkBottle.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(inkBottle.ImageFile);
-                    inkBottle.ImageName = uniqueFileName ?? inkBottle.ImageName;
+                    inkBottle.ImageName = uniqueFileName ?? oldInkBottle!.ImageName;
                     _context.Update(inkBottle);
                     await _context.SaveChangesAsync();
                 }

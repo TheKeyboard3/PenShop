@@ -47,22 +47,28 @@ namespace PenShop.Controllers
             return View(fountainPenOrder);
         }
 
-        // GET: FountainPenOrder/Create
-        public IActionResult Create()
+        // GET: FountainPenOrder/Create/penId
+        public IActionResult Create(int penId)
         {
             ViewData["CustomerId"] = new SelectList(_context.Customer, nameof(Customer.Id), nameof(Customer.FullName));
-            ViewData["OrderId"] = new SelectList(_context.Order, nameof(Order.Id), nameof(Order.Text));
-            ViewData["PenId"] = new SelectList(_context.FountainPen, nameof(FountainPen.Id), nameof(FountainPen.Name));
+            var pen = _context.FountainPen.Where(x => x.Id == penId).FirstOrDefault();
+            if (pen is null)
+                return NotFound();
+
+            ViewData["PenId"] = pen.Id;
+            ViewData["PenName"] = pen.Name;
+
             return View();
         }
 
-        // POST: FountainPenOrder/Create
+        // POST: FountainPenOrder/Create/penId
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PenId,RemoveNib,Id,CustomerId,OrderId,Quantity")] FountainPenOrder fountainPenOrder)
+        public async Task<IActionResult> Create(int penId, [Bind("RemoveNib,CustomerId,Quantity")] FountainPenOrder fountainPenOrder)
         {
+            fountainPenOrder.PenId = penId;
             if (ModelState.IsValid)
             {
                 _context.Add(fountainPenOrder);
@@ -70,8 +76,13 @@ namespace PenShop.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerId"] = new SelectList(_context.Customer, nameof(Customer.Id), nameof(Customer.FullName), fountainPenOrder.CustomerId);
-            ViewData["OrderId"] = new SelectList(_context.Order, nameof(Order.Id), nameof(Order.Text), fountainPenOrder.OrderId);
-            ViewData["PenId"] = new SelectList(_context.FountainPen, nameof(FountainPen.Id), nameof(FountainPen.Name), fountainPenOrder.PenId);
+            var pen = _context.FountainPen.Where(x => x.Id == penId).FirstOrDefault();
+            if (pen is null)
+                return NotFound();
+
+            ViewData["PenId"] = pen.Id;
+            ViewData["PenName"] = pen.Name;
+
             return View(fountainPenOrder);
         }
 

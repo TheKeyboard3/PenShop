@@ -1,28 +1,19 @@
 @model PenShop.Models.GeneralProductOrder
 
 @{
-    ViewData["Title"] = "Create an other product order";
+    ViewData["Title"] = $"Ordering {@ViewData["ProductName"]}";
 }
 
-<h1>Create</h1>
+<h1>Ordering @ViewData["ProductName"]</h1>
 
-<h4>Other product order</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="GeneralProduct" class="control-label"></label>
-                <select asp-for="GeneralProductId" class ="form-control" asp-items="ViewBag.GeneralProductId"></select>
-            </div>
-            <div class="form-group">
                 <label asp-for="Customer" class="control-label"></label>
                 <select asp-for="CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Order" class="control-label"></label>
-                <select asp-for="OrderId" class ="form-control" asp-items="ViewBag.OrderId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Quantity" class="control-label"></label>
@@ -37,7 +28,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Details" asp-controller="Product" asp-route-id="@ViewData["ProductId"]">Back to @ViewData["ProductName"]</a>
 </div>
 
 @section Scripts {

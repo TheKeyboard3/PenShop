@@ -39,7 +39,18 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "generalProductOrderCreate",
+    pattern: "GeneralProductOrder/Create/{productId}",
+    defaults: new {controller="GeneralProductOrder", action="Create"});
+
+app.MapControllerRoute(
+    name: "fountainPenOrderCreate",
+    pattern: "FountainPenOrder/Create/{penId}",
+    defaults: new {controller="FountainPenOrder", action="Create"});
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Product}/{action=Index}/{id?}");
+
 
 app.Run();

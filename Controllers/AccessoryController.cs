@@ -61,6 +61,33 @@ namespace PenShop.Controllers
             throw new InvalidOperationException();
         }
 
+        // GET: Accessory/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.Accessory == null)
+            {
+                return NotFound();
+            }
+
+            var accessory = await _context.Accessory
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (accessory == null)
+            {
+                return NotFound();
+            }
+
+            if(accessory is NibAccessory)
+                return RedirectToAction(nameof(NibAccessoryController.Order), nameof(NibAccessory), new {id = id});
+
+            if(accessory is Converter)
+                return RedirectToAction(nameof(ConverterController.Order), nameof(Converter), new {id = id});
+
+            if(accessory is Stand)
+                return RedirectToAction(nameof(StandController.Order), nameof(Stand), new {id = id});
+
+            throw new InvalidOperationException();
+        }
+
         // GET: Accessory/Details/5
         public async Task<IActionResult> ProductCard(int? id)
         {

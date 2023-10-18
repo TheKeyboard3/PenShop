@@ -45,6 +45,25 @@ namespace PenShop.Controllers
             return View(stand);
         }
 
+        // GET: Stand/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.Stand == null)
+            {
+                return NotFound();
+            }
+
+            var stand = await _context.Stand
+                .Include(s => s.Material)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (stand == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(GeneralProductOrderController.Create), nameof(GeneralProductOrder), new {productId = id});
+        }
+
         // GET: Stand/ProductCard/5
         public async Task<IActionResult> ProductCard(int? id)
         {
@@ -125,12 +144,14 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var oldStand = await _context.Stand.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(stand.ImageFile);
-                    stand.ImageName = uniqueFileName ?? stand.ImageName;
+                    stand.ImageName = uniqueFileName ?? oldStand!.ImageName;
                     _context.Update(stand);
                     await _context.SaveChangesAsync();
                 }

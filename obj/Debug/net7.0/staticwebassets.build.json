@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eczmcswX1t1qulUA3pDSesoobTiidiSStO5QSK+w+/8=",
+  "Hash": "4yG9HZFc5nCFYmpAokqoFATqwE3wsHtFTqnEza42S1M=",
   "Source": "PenShop",
   "BasePath": "_content/PenShop",
   "Mode": "Default",
@@ -85,12 +85,12 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
-      "Identity": "/home/kolia/projects/web/wwwroot/images/b895267e-75ba-4f54-b473-6b03d2a9934e_IMG_20230928_202740832.jpg",
+      "Identity": "/home/kolia/projects/web/wwwroot/images/dd5c1bbe-c7d2-4fec-aeb0-6b5aac7c16a3_converter.png",
       "SourceId": "PenShop",
       "SourceType": "Discovered",
       "ContentRoot": "/home/kolia/projects/web/wwwroot/",
       "BasePath": "_content/PenShop",
-      "RelativePath": "images/b895267e-75ba-4f54-b473-6b03d2a9934e_IMG_20230928_202740832.jpg",
+      "RelativePath": "images/dd5c1bbe-c7d2-4fec-aeb0-6b5aac7c16a3_converter.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,7 +99,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/b895267e-75ba-4f54-b473-6b03d2a9934e_IMG_20230928_202740832.jpg"
+      "OriginalItemSpec": "wwwroot/images/dd5c1bbe-c7d2-4fec-aeb0-6b5aac7c16a3_converter.png"
+    },
+    {
+      "Identity": "/home/kolia/projects/web/wwwroot/images/f78c588f-785f-48b0-aad9-54e925652bfb_fountain_pen.png",
+      "SourceId": "PenShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/kolia/projects/web/wwwroot/",
+      "BasePath": "_content/PenShop",
+      "RelativePath": "images/f78c588f-785f-48b0-aad9-54e925652bfb_fountain_pen.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/f78c588f-785f-48b0-aad9-54e925652bfb_fountain_pen.png"
     },
     {
       "Identity": "/home/kolia/projects/web/wwwroot/images/no-image.jpg",

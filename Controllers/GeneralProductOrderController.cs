@@ -47,31 +47,41 @@ namespace PenShop.Controllers
             return View(generalProductOrder);
         }
 
-        // GET: GeneralProductOrder/Create
-        public IActionResult Create()
+        // GET: GeneralProductOrder/Create/productId
+        public IActionResult Create(int productId)
         {
             ViewData["CustomerId"] = new SelectList(_context.Customer, nameof(Customer.Id), nameof(Customer.FullName));
-            ViewData["OrderId"] = new SelectList(_context.Order, nameof(Order.Id), nameof(Order.Text));
-            ViewData["GeneralProductId"] = new SelectList(_context.Product.AsEnumerable().Select(x => x is FountainPen ? null : x).Where(x => x != null), nameof(Product.Id), nameof(Product.Name));
+            var product = _context.Product.Where(x => x.Id == productId).FirstOrDefault();
+            if (product is null || product is FountainPen)
+                return NotFound();
+
+            ViewData["ProductId"] = product.Id;
+            ViewData["ProductName"] = product.Name;
+
             return View();
         }
 
-        // POST: GeneralProductOrder/Create
+        // POST: GeneralProductOrder/Create/productId
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GeneralProductId,Id,CustomerId,OrderId,Quantity")] GeneralProductOrder generalProductOrder)
+        public async Task<IActionResult> Create(int productId, [Bind("Id,CustomerId,Quantity")] GeneralProductOrder generalProductOrder)
         {
+            generalProductOrder.GeneralProductId = productId;
             if (ModelState.IsValid)
             {
                 _context.Add(generalProductOrder);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, nameof(Customer.Id), nameof(Customer.FullName), generalProductOrder.CustomerId);
-            ViewData["OrderId"] = new SelectList(_context.Order, nameof(Order.Id), nameof(Order.Text), generalProductOrder.OrderId);
-            ViewData["GeneralProductId"] = new SelectList(_context.Product.AsEnumerable().Select(x => x is FountainPen ? null : x).Where(x => x != null), nameof(Product.Id), nameof(Product.Name), generalProductOrder.GeneralProductId);
+            var product = _context.Product.Where(x => x.Id == productId).FirstOrDefault();
+            if (product is null || product is FountainPen)
+                return NotFound();
+
+            ViewData["ProductId"] = product.Id;
+            ViewData["ProductName"] = product.Name;
+
             return View(generalProductOrder);
         }
 

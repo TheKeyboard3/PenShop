@@ -55,6 +55,32 @@ namespace PenShop.Controllers
             throw new InvalidOperationException();
         }
 
+        // GET: Pen/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.Pen == null)
+            {
+                return NotFound();
+            }
+
+            var pen = await _context.Pen
+                .Include(p => p.CartridgeStandard)
+                .Include(p => p.Material)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (pen == null)
+            {
+                return NotFound();
+            }
+
+            if(pen is FountainPen)
+                return RedirectToAction(nameof(FountainPenController.Order), nameof(FountainPen), new {id = id});
+
+            if(pen is RollerballPen)
+                return RedirectToAction(nameof(RollerballPenController.Order), nameof(RollerballPen), new {id = id});
+
+            throw new InvalidOperationException();
+        }
+
         // GET: Pen/Details/5
         public async Task<IActionResult> ProductCard(int? id)
         {

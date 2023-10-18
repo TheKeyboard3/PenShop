@@ -45,6 +45,25 @@ namespace PenShop.Controllers
             return View(converter);
         }
 
+        // GET: Converter/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.Converter == null)
+            {
+                return NotFound();
+            }
+
+            var converter = await _context.Converter
+                .Include(c => c.CartridgeStandard)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (converter == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(GeneralProductOrderController.Create), nameof(GeneralProductOrder), new {productId = id});
+        }
+
         // GET: Converter/ProductCard/5
         public async Task<IActionResult> ProductCard(int? id)
         {
@@ -125,12 +144,14 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var oldConverter = await _context.Converter.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(converter.ImageFile);
-                    converter.ImageName = uniqueFileName ?? converter.ImageName;
+                    converter.ImageName = uniqueFileName ?? oldConverter!.ImageName;
                     _context.Update(converter);
                     await _context.SaveChangesAsync();
                 }

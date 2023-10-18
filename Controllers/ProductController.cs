@@ -61,6 +61,33 @@ namespace PenShop.Controllers
             throw new InvalidOperationException();
         }
 
+        // GET: Product/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.Product == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Product
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            if(product is Pen)
+                return RedirectToAction(nameof(PenController.Order), nameof(Pen), new {id = id});
+
+            if(product is Ink)
+                return RedirectToAction(nameof(InkController.Order), nameof(Ink), new {id = id});
+
+            if(product is Accessory)
+                return RedirectToAction(nameof(AccessoryController.Order), nameof(Accessory), new {id = id});
+
+            throw new InvalidOperationException();
+        }
+
         // GET: Product/Details/5
         public async Task<IActionResult> ProductCard(int? id)
         {

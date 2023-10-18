@@ -47,6 +47,27 @@ namespace PenShop.Controllers
             return View(fountainPen);
         }
 
+        // GET: FountainPen/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.FountainPen == null)
+            {
+                return NotFound();
+            }
+
+            var fountainPen = await _context.FountainPen
+                .Include(f => f.CartridgeStandard)
+                .Include(f => f.Material)
+                .Include(f => f.Nib)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (fountainPen == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(FountainPenOrderController.Create), nameof(FountainPenOrder), new {penId = id});
+        }
+
         // GET: FountainPen/ProductCard/5
         public async Task<IActionResult> ProductCard(int? id)
         {
@@ -135,12 +156,14 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var oldFountainPen = await _context.FountainPen.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(fountainPen.ImageFile);
-                    fountainPen.ImageName = uniqueFileName ?? fountainPen.ImageName;
+                    fountainPen.ImageName = uniqueFileName ?? oldFountainPen!.ImageName;
                     _context.Update(fountainPen);
                     await _context.SaveChangesAsync();
                 }

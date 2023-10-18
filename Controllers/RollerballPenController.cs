@@ -46,6 +46,26 @@ namespace PenShop.Controllers
             return View(rollerballPen);
         }
 
+        // GET: RollerballPen/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.RollerballPen == null)
+            {
+                return NotFound();
+            }
+
+            var rollerballPen = await _context.RollerballPen
+                .Include(r => r.CartridgeStandard)
+                .Include(r => r.Material)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (rollerballPen == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(GeneralProductOrderController.Create), nameof(GeneralProductOrder), new {productId = id});
+        }
+
         // GET: RollerballPen/ProductCard/5
         public async Task<IActionResult> ProductCard(int? id)
         {
@@ -130,12 +150,14 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var oldRollerballPen = await _context.RollerballPen.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(rollerballPen.ImageFile);
-                    rollerballPen.ImageName = uniqueFileName ?? rollerballPen.ImageName;
+                    rollerballPen.ImageName = uniqueFileName ?? oldRollerballPen!.ImageName;
                     _context.Update(rollerballPen);
                     await _context.SaveChangesAsync();
                 }

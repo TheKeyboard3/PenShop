@@ -45,6 +45,25 @@ namespace PenShop.Controllers
             return View(nibAccessory);
         }
 
+        // GET: NibAccessory/Order/5
+        public async Task<IActionResult> Order(int? id)
+        {
+            if (id == null || _context.NibAccessory == null)
+            {
+                return NotFound();
+            }
+
+            var nibAccessory = await _context.NibAccessory
+                .Include(n => n.Nib)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (nibAccessory == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(GeneralProductOrderController.Create), nameof(GeneralProductOrder), new {productId = id});
+        }
+
         // GET: NibAccessory/ProductCard/5
         public async Task<IActionResult> ProductCard(int? id)
         {
@@ -125,12 +144,14 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var oldNibAccessory = await _context.NibAccessory.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(nibAccessory.ImageFile);
-                    nibAccessory.ImageName = uniqueFileName ?? nibAccessory.ImageName;
+                    nibAccessory.ImageName = uniqueFileName ?? oldNibAccessory!.ImageName;
                     _context.Update(nibAccessory);
                     await _context.SaveChangesAsync();
                 }
