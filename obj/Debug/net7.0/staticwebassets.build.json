@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Gde+MMC1PcpFoMaWE9ncnusi//fANt4FR1MtxIpPzus=",
+  "Hash": "eczmcswX1t1qulUA3pDSesoobTiidiSStO5QSK+w+/8=",
   "Source": "PenShop",
   "BasePath": "_content/PenShop",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/kolia/projects/web/wwwroot/images/b895267e-75ba-4f54-b473-6b03d2a9934e_IMG_20230928_202740832.jpg",
+      "SourceId": "PenShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/kolia/projects/web/wwwroot/",
+      "BasePath": "_content/PenShop",
+      "RelativePath": "images/b895267e-75ba-4f54-b473-6b03d2a9934e_IMG_20230928_202740832.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/b895267e-75ba-4f54-b473-6b03d2a9934e_IMG_20230928_202740832.jpg"
+    },
+    {
+      "Identity": "/home/kolia/projects/web/wwwroot/images/no-image.jpg",
+      "SourceId": "PenShop",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/kolia/projects/web/wwwroot/",
+      "BasePath": "_content/PenShop",
+      "RelativePath": "images/no-image.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/no-image.jpg"
     },
     {
       "Identity": "/home/kolia/projects/web/wwwroot/js/site.js",

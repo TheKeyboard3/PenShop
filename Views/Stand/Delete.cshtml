@@ -6,10 +6,12 @@
 
 <h1>Delete</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to delete this stand?</h3>
 <div>
-    <h4>Stand</h4>
     <hr />
+    <img src="~/images/@Model.ImageNameForDisplay"
+        width="1000" height="800"
+        asp-append-version="true" />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Material)

@@ -10,11 +10,12 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
-    public class ConverterController : Controller
+    public class ConverterController : BaseProductController
     {
         private readonly PenShopContext _context;
 
-        public ConverterController(PenShopContext context)
+        public ConverterController(PenShopContext context, IWebHostEnvironment webHostEnvironment)
+            : base (webHostEnvironment)
         {
             _context = context;
         }
@@ -81,10 +82,12 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Height,Capacity,CartridgeStandardId,Id,Price,Name,Description")] Converter converter)
+        public async Task<IActionResult> Create([Bind("Height,Capacity,CartridgeStandardId,Id,Price,Name,Description,ImageFile")] Converter converter)
         {
             if (ModelState.IsValid)
             {
+                string? uniqueFileName = UploadedFile(converter.ImageFile);
+                converter.ImageName = uniqueFileName;
                 _context.Add(converter);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -115,7 +118,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Height,Capacity,CartridgeStandardId,Id,Price,Name,Description")] Converter converter)
+        public async Task<IActionResult> Edit(int id, [Bind("Height,Capacity,CartridgeStandardId,Id,Price,Name,Description,ImageFile")] Converter converter)
         {
             if (id != converter.Id)
             {
@@ -126,6 +129,8 @@ namespace PenShop.Controllers
             {
                 try
                 {
+                    string? uniqueFileName = UploadedFile(converter.ImageFile);
+                    converter.ImageName = uniqueFileName ?? converter.ImageName;
                     _context.Update(converter);
                     await _context.SaveChangesAsync();
                 }

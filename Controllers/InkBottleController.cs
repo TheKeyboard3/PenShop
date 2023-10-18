@@ -10,11 +10,12 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
-    public class InkBottleController : Controller
+    public class InkBottleController : BaseProductController
     {
         private readonly PenShopContext _context;
 
-        public InkBottleController(PenShopContext context)
+        public InkBottleController(PenShopContext context, IWebHostEnvironment webHostEnvironment)
+            : base (webHostEnvironment)
         {
             _context = context;
         }
@@ -81,10 +82,12 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Capacity,ColourId,Id,Price,Name,Description")] InkBottle inkBottle)
+        public async Task<IActionResult> Create([Bind("Capacity,ColourId,Id,Price,Name,Description,ImageFile")] InkBottle inkBottle)
         {
             if (ModelState.IsValid)
             {
+                string? uniqueFileName = UploadedFile(inkBottle.ImageFile);
+                inkBottle.ImageName = uniqueFileName;
                 _context.Add(inkBottle);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -115,7 +118,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Capacity,ColourId,Id,Price,Name,Description")] InkBottle inkBottle)
+        public async Task<IActionResult> Edit(int id, [Bind("Capacity,ColourId,Id,Price,Name,Description,ImageFile")] InkBottle inkBottle)
         {
             if (id != inkBottle.Id)
             {
@@ -126,6 +129,8 @@ namespace PenShop.Controllers
             {
                 try
                 {
+                    string? uniqueFileName = UploadedFile(inkBottle.ImageFile);
+                    inkBottle.ImageName = uniqueFileName ?? inkBottle.ImageName;
                     _context.Update(inkBottle);
                     await _context.SaveChangesAsync();
                 }

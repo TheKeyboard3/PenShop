@@ -10,11 +10,12 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
-    public class FountainPenController : Controller
+    public class FountainPenController : BaseProductController
     {
         private readonly PenShopContext _context;
 
-        public FountainPenController(PenShopContext context)
+        public FountainPenController(PenShopContext context, IWebHostEnvironment webHostEnvironment)
+            : base (webHostEnvironment)
         {
             _context = context;
         }
@@ -87,10 +88,12 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NibId,CartridgeStandardId,MaterialId,Id,Price,Name,Description")] FountainPen fountainPen)
+        public async Task<IActionResult> Create([Bind("NibId,CartridgeStandardId,MaterialId,Id,Price,Name,Description,ImageFile")] FountainPen fountainPen)
         {
             if (ModelState.IsValid)
             {
+                string? uniqueFileName = UploadedFile(fountainPen.ImageFile);
+                fountainPen.ImageName = uniqueFileName;
                 _context.Add(fountainPen);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -125,7 +128,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NibId,CartridgeStandardId,MaterialId,Id,Price,Name,Description")] FountainPen fountainPen)
+        public async Task<IActionResult> Edit(int id, [Bind("NibId,CartridgeStandardId,MaterialId,Id,Price,Name,Description,ImageFile")] FountainPen fountainPen)
         {
             if (id != fountainPen.Id)
             {
@@ -136,6 +139,8 @@ namespace PenShop.Controllers
             {
                 try
                 {
+                    string? uniqueFileName = UploadedFile(fountainPen.ImageFile);
+                    fountainPen.ImageName = uniqueFileName ?? fountainPen.ImageName;
                     _context.Update(fountainPen);
                     await _context.SaveChangesAsync();
                 }

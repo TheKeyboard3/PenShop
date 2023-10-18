@@ -10,11 +10,12 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
-    public class StandController : Controller
+    public class StandController : BaseProductController
     {
         private readonly PenShopContext _context;
 
-        public StandController(PenShopContext context)
+        public StandController(PenShopContext context, IWebHostEnvironment webHostEnvironment)
+            : base (webHostEnvironment)
         {
             _context = context;
         }
@@ -81,10 +82,12 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaterialId,Id,Price,Name,Description")] Stand stand)
+        public async Task<IActionResult> Create([Bind("MaterialId,Id,Price,Name,Description,ImageFile")] Stand stand)
         {
             if (ModelState.IsValid)
             {
+                string? uniqueFileName = UploadedFile(stand.ImageFile);
+                stand.ImageName = uniqueFileName;
                 _context.Add(stand);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -115,7 +118,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaterialId,Id,Price,Name,Description")] Stand stand)
+        public async Task<IActionResult> Edit(int id, [Bind("MaterialId,Id,Price,Name,Description,ImageFile")] Stand stand)
         {
             if (id != stand.Id)
             {
@@ -126,6 +129,8 @@ namespace PenShop.Controllers
             {
                 try
                 {
+                    string? uniqueFileName = UploadedFile(stand.ImageFile);
+                    stand.ImageName = uniqueFileName ?? stand.ImageName;
                     _context.Update(stand);
                     await _context.SaveChangesAsync();
                 }

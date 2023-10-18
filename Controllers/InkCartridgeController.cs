@@ -10,11 +10,12 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
-    public class InkCartridgeController : Controller
+    public class InkCartridgeController : BaseProductController
     {
         private readonly PenShopContext _context;
 
-        public InkCartridgeController(PenShopContext context)
+        public InkCartridgeController(PenShopContext context, IWebHostEnvironment webHostEnvironment)
+            : base (webHostEnvironment)
         {
             _context = context;
         }
@@ -84,10 +85,12 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CartridgeStandardId,Capacity,ColourId,Id,Price,Name,Description")] InkCartridge inkCartridge)
+        public async Task<IActionResult> Create([Bind("CartridgeStandardId,Capacity,ColourId,Id,Price,Name,Description,ImageFile")] InkCartridge inkCartridge)
         {
             if (ModelState.IsValid)
             {
+                string? uniqueFileName = UploadedFile(inkCartridge.ImageFile);
+                inkCartridge.ImageName = uniqueFileName;
                 _context.Add(inkCartridge);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -120,7 +123,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CartridgeStandardId,Capacity,ColourId,Id,Price,Name,Description")] InkCartridge inkCartridge)
+        public async Task<IActionResult> Edit(int id, [Bind("CartridgeStandardId,Capacity,ColourId,Id,Price,Name,Description,ImageFile")] InkCartridge inkCartridge)
         {
             if (id != inkCartridge.Id)
             {
@@ -131,6 +134,8 @@ namespace PenShop.Controllers
             {
                 try
                 {
+                    string? uniqueFileName = UploadedFile(inkCartridge.ImageFile);
+                    inkCartridge.ImageName = uniqueFileName ?? inkCartridge.ImageName;
                     _context.Update(inkCartridge);
                     await _context.SaveChangesAsync();
                 }

@@ -79,10 +79,10 @@ namespace PenShop.Controllers
         public async Task<IActionResult> ProductCard(Pen pen)
         {
             if(pen is FountainPen)
-                return await new FountainPenController(_context).ProductCard((FountainPen)pen);
+                return await _fountainPenController.ProductCard((FountainPen)pen);
 
             if(pen is RollerballPen)
-                return await new RollerballPenController(_context).ProductCard((RollerballPen)pen);
+                return await _rollerballPenController.ProductCard((RollerballPen)pen);
 
             throw new InvalidOperationException();
         }

@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/kolia/projects/web/wwwroot/images/b895267e-75ba-4f54-b473-6b03d2a9934e_IMG_20230928_202740832.jpg",
+      "PackagePath": "staticwebassets/images/b895267e-75ba-4f54-b473-6b03d2a9934e_IMG_20230928_202740832.jpg"
+    },
+    {
+      "Id": "/home/kolia/projects/web/wwwroot/images/no-image.jpg",
+      "PackagePath": "staticwebassets/images/no-image.jpg"
+    },
+    {
       "Id": "/home/kolia/projects/web/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

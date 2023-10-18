@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PenShop.Data;
 
@@ -10,9 +11,11 @@ using PenShop.Data;
 namespace PenShop.Migrations
 {
     [DbContext(typeof(PenShopContext))]
-    partial class PenShopContextModelSnapshot : ModelSnapshot
+    [Migration("20231018060226_AddedProductImage")]
+    partial class AddedProductImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

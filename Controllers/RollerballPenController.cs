@@ -10,11 +10,12 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
-    public class RollerballPenController : Controller
+    public class RollerballPenController : BaseProductController
     {
         private readonly PenShopContext _context;
 
-        public RollerballPenController(PenShopContext context)
+        public RollerballPenController(PenShopContext context, IWebHostEnvironment webHostEnvironment)
+            : base (webHostEnvironment)
         {
             _context = context;
         }
@@ -84,10 +85,12 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RollerballDiameter,CartridgeStandardId,MaterialId,Id,Price,Name,Description")] RollerballPen rollerballPen)
+        public async Task<IActionResult> Create([Bind("RollerballDiameter,CartridgeStandardId,MaterialId,Id,Price,Name,Description,ImageFile")] RollerballPen rollerballPen)
         {
             if (ModelState.IsValid)
             {
+                string? uniqueFileName = UploadedFile(rollerballPen.ImageFile);
+                rollerballPen.ImageName = uniqueFileName;
                 _context.Add(rollerballPen);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -120,7 +123,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RollerballDiameter,CartridgeStandardId,MaterialId,Id,Price,Name,Description")] RollerballPen rollerballPen)
+        public async Task<IActionResult> Edit(int id, [Bind("RollerballDiameter,CartridgeStandardId,MaterialId,Id,Price,Name,Description,ImageFile")] RollerballPen rollerballPen)
         {
             if (id != rollerballPen.Id)
             {
@@ -131,6 +134,8 @@ namespace PenShop.Controllers
             {
                 try
                 {
+                    string? uniqueFileName = UploadedFile(rollerballPen.ImageFile);
+                    rollerballPen.ImageName = uniqueFileName ?? rollerballPen.ImageName;
                     _context.Update(rollerballPen);
                     await _context.SaveChangesAsync();
                 }

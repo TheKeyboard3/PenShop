@@ -50,13 +50,13 @@ namespace PenShop.Controllers
             }
 
             if(accessory is NibAccessory)
-                return RedirectToAction(nameof(NibAccessoryController.Details), nameof(NibAccessory));
+                return RedirectToAction(nameof(NibAccessoryController.Details), nameof(NibAccessory), new {id = id});
 
             if(accessory is Converter)
-                return RedirectToAction(nameof(ConverterController.Details), nameof(Converter));
+                return RedirectToAction(nameof(ConverterController.Details), nameof(Converter), new {id = id});
 
             if(accessory is Stand)
-                return RedirectToAction(nameof(StandController.Details), nameof(Stand));
+                return RedirectToAction(nameof(StandController.Details), nameof(Stand), new {id = id});
 
             throw new InvalidOperationException();
         }
@@ -109,13 +109,13 @@ namespace PenShop.Controllers
             }
 
             if(accessory is NibAccessory)
-                return RedirectToAction(nameof(NibAccessoryController.Edit), nameof(NibAccessory));
+                return RedirectToAction(nameof(NibAccessoryController.Edit), nameof(NibAccessory), new {id = id});
 
             if(accessory is Converter)
-                return RedirectToAction(nameof(ConverterController.Edit), nameof(Converter));
+                return RedirectToAction(nameof(ConverterController.Edit), nameof(Converter), new {id = id});
 
             if(accessory is Stand)
-                return RedirectToAction(nameof(StandController.Edit), nameof(Stand));
+                return RedirectToAction(nameof(StandController.Edit), nameof(Stand), new {id = id});
 
             throw new InvalidOperationException();
         }
@@ -136,13 +136,13 @@ namespace PenShop.Controllers
             }
 
             if(accessory is NibAccessory)
-                return RedirectToAction(nameof(NibAccessoryController.Delete), nameof(NibAccessory));
+                return RedirectToAction(nameof(NibAccessoryController.Delete), nameof(NibAccessory), new {id = id});
 
             if(accessory is Converter)
-                return RedirectToAction(nameof(ConverterController.Delete), nameof(Converter));
+                return RedirectToAction(nameof(ConverterController.Delete), nameof(Converter), new {id = id});
 
             if(accessory is Stand)
-                return RedirectToAction(nameof(StandController.Delete), nameof(Stand));
+                return RedirectToAction(nameof(StandController.Delete), nameof(Stand), new {id = id});
 
             throw new InvalidOperationException();
         }

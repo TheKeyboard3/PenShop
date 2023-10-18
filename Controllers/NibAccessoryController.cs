@@ -10,11 +10,12 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
-    public class NibAccessoryController : Controller
+    public class NibAccessoryController : BaseProductController
     {
         private readonly PenShopContext _context;
 
-        public NibAccessoryController(PenShopContext context)
+        public NibAccessoryController(PenShopContext context, IWebHostEnvironment webHostEnvironment)
+            : base (webHostEnvironment)
         {
             _context = context;
         }
@@ -81,10 +82,12 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NibId,Price,Id,Name,Description")] NibAccessory nibAccessory)
+        public async Task<IActionResult> Create([Bind("NibId,Price,Id,Name,Description,ImageFile")] NibAccessory nibAccessory)
         {
             if (ModelState.IsValid)
             {
+                string? uniqueFileName = UploadedFile(nibAccessory.ImageFile);
+                nibAccessory.ImageName = uniqueFileName;
                 _context.Add(nibAccessory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -115,7 +118,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NibId,Price,Id,Name,Description")] NibAccessory nibAccessory)
+        public async Task<IActionResult> Edit(int id, [Bind("NibId,Price,Id,Name,Description,ImageFile")] NibAccessory nibAccessory)
         {
             if (id != nibAccessory.Id)
             {
@@ -126,6 +129,8 @@ namespace PenShop.Controllers
             {
                 try
                 {
+                    string? uniqueFileName = UploadedFile(nibAccessory.ImageFile);
+                    nibAccessory.ImageName = uniqueFileName ?? nibAccessory.ImageName;
                     _context.Update(nibAccessory);
                     await _context.SaveChangesAsync();
                 }
