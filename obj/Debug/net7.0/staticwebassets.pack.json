@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/kolia/projects/web/wwwroot/images/28f86e55-4a46-44a4-b9d8-8b196cab6f21_rollerball_pen.png",
+      "PackagePath": "staticwebassets/images/28f86e55-4a46-44a4-b9d8-8b196cab6f21_rollerball_pen.png"
+    },
+    {
       "Id": "/home/kolia/projects/web/wwwroot/images/dd5c1bbe-c7d2-4fec-aeb0-6b5aac7c16a3_converter.png",
       "PackagePath": "staticwebassets/images/dd5c1bbe-c7d2-4fec-aeb0-6b5aac7c16a3_converter.png"
     },

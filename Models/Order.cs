@@ -6,13 +6,18 @@ using System.ComponentModel.DataAnnotations;
 public class Order
 {
     public int Id{ get; set; }
-    public int? CustomerId{ get; set; }
+    [Required]
+    public int CustomerId{ get; set; }
     public virtual Customer? Customer{ get; set; }
     public virtual ICollection<ProductOrder>? ProductOrders{ get; set; }
+    [Required]
     [DataType(DataType.Date)]
     public DateTime Date { get; set; }
+    [Required]
     [Display(Name = "Shipping address")]
+    [StringLength(1000)]
     public string? ShippingAddress{ get; set; }
+    [DataType (DataType.Currency)]
     public float Price{
         get{
             if(ProductOrders is null)

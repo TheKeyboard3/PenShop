@@ -60,6 +60,9 @@ namespace PenShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Surname,DefaultShippingAddress,Email,Password")] Customer customer)
         {
+            if(customer.Password is null)
+                ModelState.AddModelError(nameof(Customer.Password), "The password is required");
+
             if (ModelState.IsValid)
             {
                 customer.PasswordHash = GetHash(customer.Password!);
