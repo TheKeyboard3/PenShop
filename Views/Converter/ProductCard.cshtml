@@ -1,3 +1,12 @@
+@using Microsoft.AspNetCore.Identity
+@using PenShop.Models
+
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
 @model PenShop.Models.Converter
 
 <div class="col-xl-3">
@@ -47,17 +56,25 @@
         </dd>
     </dl>
     <div class="row">
-        <div class = "col-sm-3">
+        <div class = "col-sm-4">
             <a asp-action="Details" asp-route-id="@Model?.Id">Details</a>
         </div>
-        <div class = "col-sm-3">
-            <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a>
-        </div>
-        <div class = "col-sm-3">
-            <a asp-action="Order" asp-route-id="@Model?.Id">Order</a>
-        </div>
-        <div class = "col-sm-3">
-            <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
-        </div>
+        @if (user is Customer){
+            <div class = "col-sm-8">
+                <a asp-action="Order" asp-route-id="@Model?.Id">Order</a>
+            </div>
+        }else if(user is null){
+            <div class = "col-sm-8">
+                <a>Please register to make an order</a>
+            </div>
+        }
+        @if (user is Administrator){
+            <div class = "col-sm-4">
+                <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a>
+            </div>
+            <div class = "col-sm-4">
+                <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+            </div>
+        }
     </div>
 </div>

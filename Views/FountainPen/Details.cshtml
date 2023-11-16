@@ -1,3 +1,12 @@
+@using Microsoft.AspNetCore.Identity
+@using PenShop.Models
+
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
 @model PenShop.Models.FountainPen
 
 @{
@@ -52,7 +61,13 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Order" asp-route-id="@Model?.Id">Order</a> |
+    @if (user is Administrator){
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> <a>|</a>
+    }
+    @if (user is Customer){
+        <a asp-action="Order" asp-route-id="@Model?.Id">Order</a> <a>|</a>
+    }else if(user is null){
+        <a>Please register to make an order</a> <a>|</a>
+    }
     <a asp-action="Index">Back to List</a>
 </div>

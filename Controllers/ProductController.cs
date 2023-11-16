@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -62,6 +63,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Product/Order/5
+        [Authorize(Policy = "Customer")]
         public async Task<IActionResult> Order(int? id)
         {
             if (id == null || _context.Product == null)
@@ -122,6 +124,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Product/Edit/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Product == null)
@@ -148,6 +151,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Product/Delete/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Product == null)

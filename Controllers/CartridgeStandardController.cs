@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
+    [Authorize(Policy = "Administrator")]
     public class CartridgeStandardController : Controller
     {
         private readonly PenShopContext _context;
@@ -95,11 +97,16 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var oldCartridgeStandard = _context.CartridgeStandard.Find(id);
+            if(oldCartridgeStandard is null)
+                return NotFound();
+
+            oldCartridgeStandard.Name = cartridgeStandard.Name;
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(cartridgeStandard);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

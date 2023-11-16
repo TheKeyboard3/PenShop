@@ -2,23 +2,37 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Text;
-using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PenShop.Data;
 using PenShop.Models;
+using PenShop.Areas.Identity.Pages.Account;
 
 namespace PenShop.Controllers
 {
+    [Authorize(Policy = "Administrator")]
     public class AdministratorController : Controller
     {
         private readonly PenShopContext _context;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IUserStore<IdentityUser> _userStore;
+        private readonly IUserEmailStore<IdentityUser> _emailStore;
 
-        public AdministratorController(PenShopContext context)
+        public AdministratorController(PenShopContext context,
+            UserManager<IdentityUser> userManager,
+            IUserStore<IdentityUser> userStore,
+            SignInManager<IdentityUser> signInManager)
         {
             _context = context;
+            _userManager = userManager;
+            _userStore = userStore;
+            _signInManager = signInManager;
+            _emailStore = GetEmailStore();
         }
 
         // GET: Administrator
@@ -30,7 +44,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Administrator/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Administrator == null)
             {
@@ -58,23 +72,28 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Email,Password")] Administrator administrator)
+        public async Task<IActionResult> Create([Bind("Email,Password,ConfirmPassword")] RegisterModel.InputModel input)
         {
-            if(administrator.Password is null)
-                ModelState.AddModelError(nameof(Administrator.Password), "The password is required");
-
             if (ModelState.IsValid)
             {
-                administrator.PasswordHash = GetHash(administrator.Password!);
-                _context.Add(administrator);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var user = CreateUser();
+
+                await _userStore.SetUserNameAsync(user, input.Email, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, input.Email, CancellationToken.None);
+                var result = await _userManager.CreateAsync(user, input.Password);
+
+                if (result.Succeeded)
+                    return RedirectToAction(nameof(Index));
+
+                foreach (var error in result.Errors)
+                    ModelState.AddModelError(string.Empty, error.Description);
             }
-            return View(administrator);
+
+            return View(input);
         }
 
         // GET: Administrator/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Administrator == null)
             {
@@ -94,39 +113,30 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Email,Password")] Administrator administrator)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,LockoutEnd,LockoutEnabled")] Administrator administrator)
         {
             if (id != administrator.Id)
-            {
                 return NotFound();
-            }
+
+            var oldAdministrator = _context.Administrator.Find(id);
+
+            if(oldAdministrator is null)
+                return NotFound();
+
+            oldAdministrator.ConcurrencyStamp =  ((char)(administrator.ConcurrencyStamp![0] + 1))+administrator.ConcurrencyStamp!.Substring(1);
+            oldAdministrator.LockoutEnd = administrator.LockoutEnd;
+            oldAdministrator.LockoutEnabled = administrator.LockoutEnabled;
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    administrator.PasswordHash = GetHash(administrator.Password!);
-                    _context.Update(administrator);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AdministratorExists(administrator.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(administrator);
         }
 
         // GET: Administrator/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Administrator == null)
             {
@@ -146,7 +156,7 @@ namespace PenShop.Controllers
         // POST: Administrator/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (_context.Administrator == null)
             {
@@ -162,21 +172,32 @@ namespace PenShop.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AdministratorExists(int id)
+        private bool AdministratorExists(string id)
         {
           return (_context.Administrator?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        private string GetHash(string s){
-            using(SHA256 sha256 = SHA256.Create()){
-                byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(s));
-                var sBuilder = new StringBuilder();
-                for(int i = 0; i < hash.Length; i++)
-                {
-                    sBuilder.Append(hash[i].ToString("x2"));
-                }
-                return sBuilder.ToString();
+        private IdentityUser CreateUser()
+        {
+            try
+            {
+                return Activator.CreateInstance<Administrator>();
             }
+            catch
+            {
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(Administrator)}'. " +
+                    $"Ensure that '{nameof(Administrator)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                    $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
+            }
+        }
+
+        private IUserEmailStore<IdentityUser> GetEmailStore()
+        {
+            if (!_userManager.SupportsUserEmail)
+            {
+                throw new NotSupportedException("The default UI requires a user store with email support.");
+            }
+            return (IUserEmailStore<IdentityUser>)_userStore;
         }
     }
 }

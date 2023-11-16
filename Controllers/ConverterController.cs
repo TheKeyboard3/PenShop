@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Converter/Order/5
+        [Authorize(Policy = "Customer")]
         public async Task<IActionResult> Order(int? id)
         {
             if (id == null || _context.Converter == null)
@@ -89,6 +91,7 @@ namespace PenShop.Controllers
             return Task.FromResult<IActionResult>(PartialView("/Views/Converter/ProductCard.cshtml", converter));
         }
 
+        [Authorize(Policy = "Administrator")]
         // GET: Converter/Create
         public IActionResult Create()
         {
@@ -101,6 +104,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Create([Bind("Height,Capacity,CartridgeStandardId,Id,Price,Name,Description,ImageFile")] Converter converter)
         {
             if (ModelState.IsValid)
@@ -116,6 +120,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Converter/Edit/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Converter == null)
@@ -137,6 +142,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int id, [Bind("Height,Capacity,CartridgeStandardId,Id,Price,Name,Description,ImageFile")] Converter converter)
         {
             if (id != converter.Id)
@@ -144,15 +150,23 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
-            var oldConverter = await _context.Converter.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+            var oldConverter = _context.Converter.Find(id);
+            if(oldConverter is null)
+                return NotFound();
+
+            oldConverter.Height = converter.Height;
+            oldConverter.Capacity = converter.Capacity;
+            oldConverter.CartridgeStandardId = converter.CartridgeStandardId;
+            oldConverter.Price = converter.Price;
+            oldConverter.Name = converter.Name;
+            oldConverter.Description = converter.Description;
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(converter.ImageFile);
-                    converter.ImageName = uniqueFileName ?? oldConverter!.ImageName;
-                    _context.Update(converter);
+                    oldConverter.ImageName = uniqueFileName ?? oldConverter.ImageName;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -173,6 +187,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Converter/Delete/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Converter == null)
@@ -194,6 +209,7 @@ namespace PenShop.Controllers
         // POST: Converter/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Converter == null)

@@ -7,7 +7,7 @@ public class Order
 {
     public int Id{ get; set; }
     [Required]
-    public int CustomerId{ get; set; }
+    public string? CustomerId{ get; set; }
     public virtual Customer? Customer{ get; set; }
     public virtual ICollection<ProductOrder>? ProductOrders{ get; set; }
     [Required]

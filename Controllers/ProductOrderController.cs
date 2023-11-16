@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +13,7 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
+    [Authorize]
     public class ProductOrderController : Controller
     {
         private readonly PenShopContext _context;
@@ -23,7 +27,23 @@ namespace PenShop.Controllers
         public async Task<IActionResult> Index()
         {
             var penShopContext = _context.ProductOrder.Include(p => p.Customer).Include(p => p.Order);
-            return View(await penShopContext.ToListAsync());
+            var user = GetUser();
+            if (user is Administrator)
+            {
+                return View(await penShopContext.ToListAsync());
+            }
+            else if (user is Customer)
+            {
+                return View(await penShopContext.Where(x => x.CustomerId == user.Id || x.Order != null && x.Order.CustomerId == user.Id).ToListAsync());
+            }
+            else if (user is null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                return Problem("Unknown user");
+            }
         }
 
         // GET: ProductOrder/Details/5
@@ -41,6 +61,12 @@ namespace PenShop.Controllers
             if (productOrder == null)
             {
                 return NotFound();
+            }
+
+            var user = GetUser();
+            if (user is null || productOrder.CustomerId != user.Id && productOrder.Order?.CustomerId != user.Id && user is not Administrator)
+            {
+                return Unauthorized();
             }
 
             if(productOrder is FountainPenOrder)
@@ -66,6 +92,12 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var user = GetUser();
+            if (user is null || productOrder.CustomerId != user.Id && productOrder.Order?.CustomerId != user.Id && user is not Administrator)
+            {
+                return Unauthorized();
+            }
+
             if(productOrder is FountainPenOrder)
                 return RedirectToAction(nameof(FountainPenOrderController.Edit), nameof(FountainPenOrder), new {id = id});
 
@@ -87,9 +119,16 @@ namespace PenShop.Controllers
                 .Include(p => p.Customer)
                 .Include(p => p.Order)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (productOrder == null)
             {
                 return NotFound();
+            }
+
+            var user = GetUser();
+            if (user is null || productOrder.CustomerId != user.Id && productOrder.Order?.CustomerId != user.Id && user is not Administrator)
+            {
+                return Unauthorized();
             }
 
             if(productOrder is FountainPenOrder)
@@ -99,6 +138,14 @@ namespace PenShop.Controllers
                 return RedirectToAction(nameof(GeneralProductOrderController.Delete), nameof(GeneralProductOrder), new {id = id});
 
             throw new InvalidOperationException();
+        }
+
+        private IdentityUser? GetUser(){
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if(userId is null)
+                return null;
+
+            return _context.Users.Find(userId);
         }
     }
 }

@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -31,7 +34,7 @@ namespace PenShop.Controllers
         {
               return _context.Accessory != null ? 
                           View(await _context.Accessory.Select(x => x.Id).ToListAsync()) :
-                          Problem("Entity set 'PenShopContext.Accessory'  is null.");
+                          Problem("Entity set 'PenShopContext.Accessory' is null.");
         }
 
         // GET: Accessory/Details/5
@@ -61,6 +64,7 @@ namespace PenShop.Controllers
             throw new InvalidOperationException();
         }
 
+        [Authorize(Policy = "Customer")]
         // GET: Accessory/Order/5
         public async Task<IActionResult> Order(int? id)
         {
@@ -121,6 +125,7 @@ namespace PenShop.Controllers
             throw new InvalidOperationException();
         }
 
+        [Authorize(Policy = "Administrator")]
         // GET: Accessory/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -147,6 +152,7 @@ namespace PenShop.Controllers
             throw new InvalidOperationException();
         }
 
+        [Authorize(Policy = "Administrator")]
         // GET: Accessory/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

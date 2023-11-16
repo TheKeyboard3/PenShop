@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +49,7 @@ namespace PenShop.Controllers
         }
 
         // GET: FountainPen/Order/5
+        [Authorize(Policy = "Customer")]
         public async Task<IActionResult> Order(int? id)
         {
             if (id == null || _context.FountainPen == null)
@@ -96,6 +98,7 @@ namespace PenShop.Controllers
         }
 
         // GET: FountainPen/Create
+        [Authorize(Policy = "Administrator")]
         public IActionResult Create()
         {
             ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
@@ -109,6 +112,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Create([Bind("NibId,CartridgeStandardId,MaterialId,Id,Price,Name,Description,ImageFile")] FountainPen fountainPen)
         {
             if (ModelState.IsValid)
@@ -126,6 +130,7 @@ namespace PenShop.Controllers
         }
 
         // GET: FountainPen/Edit/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.FountainPen == null)
@@ -149,6 +154,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int id, [Bind("NibId,CartridgeStandardId,MaterialId,Id,Price,Name,Description,ImageFile")] FountainPen fountainPen)
         {
             if (id != fountainPen.Id)
@@ -156,15 +162,23 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
-            var oldFountainPen = await _context.FountainPen.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+            var oldFountainPen = _context.FountainPen.Find(id);
+            if(oldFountainPen is null)
+                return NotFound();
+
+            oldFountainPen.NibId = fountainPen.NibId;
+            oldFountainPen.CartridgeStandardId = fountainPen.CartridgeStandardId;
+            oldFountainPen.MaterialId = fountainPen.MaterialId;
+            oldFountainPen.Price = fountainPen.Price;
+            oldFountainPen.Name = fountainPen.Name;
+            oldFountainPen.Description = fountainPen.Description;
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(fountainPen.ImageFile);
-                    fountainPen.ImageName = uniqueFileName ?? oldFountainPen!.ImageName;
-                    _context.Update(fountainPen);
+                    oldFountainPen.ImageName = uniqueFileName ?? oldFountainPen!.ImageName;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -187,6 +201,7 @@ namespace PenShop.Controllers
         }
 
         // GET: FountainPen/Delete/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.FountainPen == null)
@@ -210,6 +225,7 @@ namespace PenShop.Controllers
         // POST: FountainPen/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.FountainPen == null)

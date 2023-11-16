@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using PenShop.Models;
 
 namespace PenShop.Data;
 
-public partial class PenShopContext : DbContext
+public partial class PenShopContext : IdentityDbContext
 {
-    public PenShopContext()
+    public PenShopContext() : base()
     {
     }
 
@@ -23,6 +25,7 @@ public partial class PenShopContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         OnModelCreatingPartial(modelBuilder);
+        base.OnModelCreating(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

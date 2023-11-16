@@ -1,13 +1,36 @@
+using PenShop.Authentication;
 using PenShop.Data;
 using PenShop.Controllers;
+using PenShop.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+//var connectionString = builder.Configuration.GetConnectionString("PenShopContextConnection") ?? throw new InvalidOperationException("Connection string 'PenShopContextConnection' not found.");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<PenShopContext>(b => b.UseLazyLoadingProxies());
+builder.Services.AddDbContext<PenShopContext>(b => b.UseLazyLoadingProxies(), optionsLifetime: ServiceLifetime.Singleton);
+builder.Services.AddSingleton<PenShopContext>();
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Lockout.AllowedForNewUsers = true;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(120);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+})
+.AddEntityFrameworkStores<PenShopContext>();
+
+builder.Services.AddSingleton<IAuthorizationHandler, IsRequirementHandler>();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Administrator", policy => policy.Requirements.Add(new IsRequirement<Administrator>()));
+    options.AddPolicy("Customer", policy => policy.Requirements.Add(new IsRequirement<Customer>()));
+});
 
 builder.Services.AddScoped<ConverterController>();
 builder.Services.AddScoped<NibAccessoryController>();
@@ -51,6 +74,8 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Product}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 
 app.Run();

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace PenShop.Controllers
         }
 
         // GET: InkBottle/Order/5
+        [Authorize(Policy = "Customer")]
         public async Task<IActionResult> Order(int? id)
         {
             if (id == null || _context.InkBottle == null)
@@ -101,6 +103,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Create([Bind("Capacity,ColourId,Id,Price,Name,Description,ImageFile")] InkBottle inkBottle)
         {
             if (ModelState.IsValid)
@@ -116,6 +119,7 @@ namespace PenShop.Controllers
         }
 
         // GET: InkBottle/Edit/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.InkBottle == null)
@@ -137,6 +141,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int id, [Bind("Capacity,ColourId,Id,Price,Name,Description,ImageFile")] InkBottle inkBottle)
         {
             if (id != inkBottle.Id)
@@ -144,15 +149,22 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
-            var oldInkBottle = await _context.InkBottle.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+            var oldInkBottle = _context.InkBottle.Find(id);
+            if(oldInkBottle is null)
+                return NotFound();
+
+            oldInkBottle.Capacity = inkBottle.Capacity;
+            oldInkBottle.ColourId = inkBottle.ColourId;
+            oldInkBottle.Price = inkBottle.Price;
+            oldInkBottle.Name = inkBottle.Name;
+            oldInkBottle.Description = inkBottle.Description;
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(inkBottle.ImageFile);
-                    inkBottle.ImageName = uniqueFileName ?? oldInkBottle!.ImageName;
-                    _context.Update(inkBottle);
+                    oldInkBottle.ImageName = uniqueFileName ?? oldInkBottle!.ImageName;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -173,6 +185,7 @@ namespace PenShop.Controllers
         }
 
         // GET: InkBottle/Delete/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.InkBottle == null)
@@ -194,6 +207,7 @@ namespace PenShop.Controllers
         // POST: InkBottle/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.InkBottle == null)

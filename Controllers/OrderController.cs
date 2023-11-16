@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +13,7 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly PenShopContext _context;
@@ -23,7 +27,23 @@ namespace PenShop.Controllers
         public async Task<IActionResult> Index()
         {
             var penShopContext = _context.Order.Include(o => o.Customer);
-            return View(await penShopContext.ToListAsync());
+            var user = GetUser();
+            if (user is Administrator)
+            {
+                return View(await penShopContext.ToListAsync());
+            }
+            else if (user is Customer)
+            {
+                return View(await penShopContext.Where(x => x.CustomerId == user.Id).ToListAsync());
+            }
+            else if (user is null)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                return Problem("Unknown user");
+            }
         }
 
         // GET: Order/Details/5
@@ -37,9 +57,16 @@ namespace PenShop.Controllers
             var order = await _context.Order
                 .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (order == null)
             {
                 return NotFound();
+            }
+
+            var user = GetUser();
+            if (user is null || order.CustomerId != user.Id && user is not Administrator)
+            {
+                return Unauthorized();
             }
 
             return View(order);
@@ -48,7 +75,12 @@ namespace PenShop.Controllers
         // GET: Order/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, nameof(Customer.Id), nameof(Customer.FullName));
+            var user = GetUser();
+            var customers = user is Customer
+                ? new Customer[] {(Customer)user}
+                : _context.Customer.AsEnumerable();
+
+            ViewData["CustomerId"] = new SelectList(customers, nameof(Customer.Id), nameof(Customer.FullName));
             return View();
         }
 
@@ -59,6 +91,12 @@ namespace PenShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,CustomerId,Date,ShippingAddress")] Order order)
         {
+            var user = GetUser();
+            if (user is null || order.CustomerId != user.Id && user is not Administrator)
+            {
+                return Unauthorized();
+            }
+
             Customer? orderCustomer = _context.Customer.Where(x => x.Id == order.CustomerId).FirstOrDefault();
             if(orderCustomer is null)
                 return NotFound();
@@ -74,7 +112,12 @@ namespace PenShop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, nameof(Customer.Id), nameof(Customer.FullName), order.CustomerId);
+
+            var customers = user is Customer
+                ? new Customer[] {(Customer)user}
+                : _context.Customer.AsEnumerable();
+
+            ViewData["CustomerId"] = new SelectList(customers, nameof(Customer.Id), nameof(Customer.FullName));
             return View(order);
         }
 
@@ -91,7 +134,18 @@ namespace PenShop.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, nameof(Customer.Id), nameof(Customer.FullName), order.CustomerId);
+
+            var user = GetUser();
+            if (user is null || order.CustomerId != user.Id && user is not Administrator)
+            {
+                return Unauthorized();
+            }
+
+            var customers = user is Customer
+                ? new Customer[] {(Customer)user}
+                : _context.Customer.AsEnumerable();
+
+            ViewData["CustomerId"] = new SelectList(customers, nameof(Customer.Id), nameof(Customer.FullName), order.CustomerId);
             return View(order);
         }
 
@@ -102,16 +156,36 @@ namespace PenShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,CustomerId,Date,ShippingAddress")] Order order)
         {
+            var user = GetUser();
+            if (user is null)
+                return Unauthorized();
+
+            var customers = user is Customer
+                ? new Customer[] {(Customer)user}
+                : _context.Customer.AsEnumerable();
+
+            if (!customers.Any(x => x.Id == order.CustomerId))
+            {
+                return Unauthorized();
+            }
+
             if (id != order.Id)
             {
                 return NotFound();
             }
 
+            var oldOrder = _context.Order.Find(id);
+            if(oldOrder is null)
+                return NotFound();
+
+            oldOrder.CustomerId = order.CustomerId;
+            oldOrder.Date = order.Date;
+            oldOrder.ShippingAddress = order.ShippingAddress;
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(order);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -127,7 +201,7 @@ namespace PenShop.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, nameof(Customer.Id), nameof(Customer.FullName), order.CustomerId);
+            ViewData["CustomerId"] = new SelectList(customers, nameof(Customer.Id), nameof(Customer.FullName), order.CustomerId);
             return View(order);
         }
 
@@ -142,9 +216,16 @@ namespace PenShop.Controllers
             var order = await _context.Order
                 .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (order == null)
             {
                 return NotFound();
+            }
+
+            var user = GetUser();
+            if (user is null || order.CustomerId != user.Id && user is not Administrator)
+            {
+                return Unauthorized();
             }
 
             return View(order);
@@ -162,6 +243,12 @@ namespace PenShop.Controllers
             var order = await _context.Order.FindAsync(id);
             if (order != null)
             {
+                var user = GetUser();
+                if (user is null || order.CustomerId != user.Id && user is not Administrator)
+                {
+                    return Unauthorized();
+                }
+
                 _context.Order.Remove(order);
             }
             
@@ -172,6 +259,14 @@ namespace PenShop.Controllers
         private bool OrderExists(int id)
         {
           return (_context.Order?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private IdentityUser? GetUser(){
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if(userId is null)
+                return null;
+
+            return _context.Users.Find(userId);
         }
     }
 }

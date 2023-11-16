@@ -281,3 +281,12 @@
 /home/kolia/projects/web/obj/Debug/net7.0/PenShop.csproj.CopyComplete
 /home/kolia/projects/web/bin/Debug/net7.0/Castle.Core.dll
 /home/kolia/projects/web/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Proxies.dll
+/home/kolia/projects/web/bin/Debug/net7.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/home/kolia/projects/web/bin/Debug/net7.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/home/kolia/projects/web/bin/Debug/net7.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/kolia/projects/web/bin/Debug/net7.0/Microsoft.AspNetCore.Identity.UI.dll
+/home/kolia/projects/web/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Embedded.dll
+/home/kolia/projects/web/bin/Debug/net7.0/Microsoft.Extensions.Identity.Core.dll
+/home/kolia/projects/web/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll
+/home/kolia/projects/web/bin/Debug/net7.0/Microsoft.Extensions.Options.dll
+/home/kolia/projects/web/obj/Debug/net7.0/PenShop.MvcApplicationPartsAssemblyInfo.cs

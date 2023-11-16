@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Stand/Order/5
+        [Authorize(Policy = "Customer")]
         public async Task<IActionResult> Order(int? id)
         {
             if (id == null || _context.Stand == null)
@@ -90,6 +92,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Stand/Create
+        [Authorize(Policy = "Administrator")]
         public IActionResult Create()
         {
             ViewData["MaterialId"] = new SelectList(_context.Material, nameof(Material.Id), nameof(Material.Name));
@@ -101,6 +104,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Create([Bind("MaterialId,Id,Price,Name,Description,ImageFile")] Stand stand)
         {
             if (ModelState.IsValid)
@@ -116,6 +120,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Stand/Edit/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Stand == null)
@@ -137,6 +142,7 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int id, [Bind("MaterialId,Id,Price,Name,Description,ImageFile")] Stand stand)
         {
             if (id != stand.Id)
@@ -144,15 +150,21 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
-            var oldStand = await _context.Stand.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+            var oldStand = _context.Stand.Find(id);
+            if(oldStand is null)
+                return NotFound();
+
+            oldStand.MaterialId = stand.MaterialId;
+            oldStand.Price = stand.Price;
+            oldStand.Name = stand.Name;
+            oldStand.Description = stand.Description;
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(stand.ImageFile);
-                    stand.ImageName = uniqueFileName ?? oldStand!.ImageName;
-                    _context.Update(stand);
+                    oldStand.ImageName = uniqueFileName ?? oldStand!.ImageName;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -173,6 +185,7 @@ namespace PenShop.Controllers
         }
 
         // GET: Stand/Delete/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Stand == null)
@@ -194,6 +207,7 @@ namespace PenShop.Controllers
         // POST: Stand/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Stand == null)

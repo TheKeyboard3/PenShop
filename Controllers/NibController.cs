@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
+    [Authorize(Policy = "Administrator")]
     public class NibController : Controller
     {
         private readonly PenShopContext _context;
@@ -102,11 +104,19 @@ namespace PenShop.Controllers
                 return NotFound();
             }
 
+            var oldNib = _context.Nib.Find(id);
+            if(oldNib is null)
+                return NotFound();
+
+            oldNib.BodyMaterialId = nib.BodyMaterialId;
+            oldNib.TipMaterialId = nib.TipMaterialId;
+            oldNib.TipDiameter = nib.TipDiameter;
+            oldNib.Price = oldNib.Price;
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(nib);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

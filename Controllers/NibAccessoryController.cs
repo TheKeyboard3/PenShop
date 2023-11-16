@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +47,7 @@ namespace PenShop.Controllers
         }
 
         // GET: NibAccessory/Order/5
+        [Authorize(Policy = "Customer")]
         public async Task<IActionResult> Order(int? id)
         {
             if (id == null || _context.NibAccessory == null)
@@ -90,6 +92,7 @@ namespace PenShop.Controllers
         }
 
         // GET: NibAccessory/Create
+        [Authorize(Policy = "Administrator")]
         public IActionResult Create()
         {
             ViewData["NibId"] = new SelectList(_context.Nib, nameof(Nib.Id), nameof(Nib.Name));
@@ -101,7 +104,8 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NibId,Price,Id,Name,Description,ImageFile")] NibAccessory nibAccessory)
+        [Authorize(Policy = "Administrator")]
+        public async Task<IActionResult> Create([Bind("NibId,Id,Name,Description,ImageFile")] NibAccessory nibAccessory)
         {
             if (ModelState.IsValid)
             {
@@ -116,6 +120,7 @@ namespace PenShop.Controllers
         }
 
         // GET: NibAccessory/Edit/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.NibAccessory == null)
@@ -137,22 +142,28 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NibId,Price,Id,Name,Description,ImageFile")] NibAccessory nibAccessory)
+        [Authorize(Policy = "Administrator")]
+        public async Task<IActionResult> Edit(int id, [Bind("NibId,Id,Name,Description,ImageFile")] NibAccessory nibAccessory)
         {
             if (id != nibAccessory.Id)
             {
                 return NotFound();
             }
 
-            var oldNibAccessory = await _context.NibAccessory.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
+            var oldNibAccessory = _context.NibAccessory.Find(id);
+            if(oldNibAccessory is null)
+                return NotFound();
+
+            oldNibAccessory.NibId = nibAccessory.NibId;
+            oldNibAccessory.Name = nibAccessory.Name;
+            oldNibAccessory.Description = nibAccessory.Description;
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     string? uniqueFileName = UploadedFile(nibAccessory.ImageFile);
-                    nibAccessory.ImageName = uniqueFileName ?? oldNibAccessory!.ImageName;
-                    _context.Update(nibAccessory);
+                    oldNibAccessory.ImageName = uniqueFileName ?? oldNibAccessory!.ImageName;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -173,6 +184,7 @@ namespace PenShop.Controllers
         }
 
         // GET: NibAccessory/Delete/5
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.NibAccessory == null)
@@ -194,6 +206,7 @@ namespace PenShop.Controllers
         // POST: NibAccessory/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.NibAccessory == null)
