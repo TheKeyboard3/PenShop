@@ -1,10 +1,13 @@
 @model IEnumerable<PenShop.Models.GeneralProductOrder>
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Other product orders";
+    ViewData["Title"] = Localizer["OtherProductOrders"];
 }
 
-<h1>Other product orders</h1>
+<h1>@Localizer["OtherProductOrders"]</h1>
 
 <p>
     <a asp-controller="ProductOrder" asp-action="Index">Product orders</a>
@@ -43,9 +46,9 @@
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Localizer["Details"]</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Localizer["Delete"]</a>
             </td>
         </tr>
 }

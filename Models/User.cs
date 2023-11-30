@@ -5,9 +5,10 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
+[Display(Name = "User")]
 public abstract class User : IdentityUser
 {
-    [Display(Name = "Email confirmed")]
+    [Display(Name = "EmailConfirmed")]
     public new bool EmailConfirmed
     {
         get
@@ -20,7 +21,7 @@ public abstract class User : IdentityUser
         }
     }
     [DataType(DataType.DateTime)]
-    [Display(Name = "Lockout end")]
+    [Display(Name = "LockoutEnd")]
     public new DateTimeOffset? LockoutEnd
     {
         get
@@ -32,7 +33,7 @@ public abstract class User : IdentityUser
             base.LockoutEnd = value;
         }
     }
-    [Display(Name = "Lockout enabled")]
+    [Display(Name = "LockoutEnabled")]
     public new bool LockoutEnabled
     {
         get
@@ -44,7 +45,7 @@ public abstract class User : IdentityUser
             base.LockoutEnabled = value;
         }
     }
-    [Display(Name = "Failed logins")]
+    [Display(Name = "FailedLogins")]
     public new int AccessFailedCount{
         get
         {

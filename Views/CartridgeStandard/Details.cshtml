@@ -1,13 +1,16 @@
 @model PenShop.Models.CartridgeStandard
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Cartridge standard details";
+    ViewData["Title"] = Localizer["CartridgeStandardDetails"];
 }
 
-<h1>Details</h1>
+<h1>@Localizer["Details"]</h1>
 
 <div>
-    <h4>Cartridge standard</h4>
+    <h4>@Localizer["CartridgeStandard"]</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -20,5 +23,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>

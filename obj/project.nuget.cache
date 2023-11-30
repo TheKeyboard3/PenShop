@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "u0V0EZHjkNFy8x+U2nIryvxRy7VKQuG/K2E8EtV+tOk6h7NJ+GmVr0r901VOIS5LIjb6QuGAHBawzgyfXlEN7w==",
+  "dgSpecHash": "FqhKXEfOJTHQ3MHNoRXkyC1/MUbkPP4IVn2Ca2g1TWKFEC42YX4RF/BEWT/byo+5UBK/pHflz5FeJa7QvJ2RSg==",
   "success": true,
   "projectFilePath": "/home/kolia/projects/web/PenShop.csproj",
   "expectedPackageFiles": [
+    "/home/kolia/.nuget/packages/askmethat.aspnet.jsonlocalizer/4.0.1/askmethat.aspnet.jsonlocalizer.4.0.1.nupkg.sha512",
     "/home/kolia/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/home/kolia/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
     "/home/kolia/.nuget/packages/castle.core/5.1.0/castle.core.5.1.0.nupkg.sha512",
@@ -102,6 +103,8 @@
     "/home/kolia/.nuget/packages/microsoft.extensions.fileproviders.embedded/7.0.14/microsoft.extensions.fileproviders.embedded.7.0.14.nupkg.sha512",
     "/home/kolia/.nuget/packages/microsoft.extensions.identity.core/7.0.14/microsoft.extensions.identity.core.7.0.14.nupkg.sha512",
     "/home/kolia/.nuget/packages/microsoft.extensions.identity.stores/7.0.14/microsoft.extensions.identity.stores.7.0.14.nupkg.sha512",
+    "/home/kolia/.nuget/packages/microsoft.extensions.localization/6.0.7/microsoft.extensions.localization.6.0.7.nupkg.sha512",
+    "/home/kolia/.nuget/packages/microsoft.extensions.localization.abstractions/6.0.7/microsoft.extensions.localization.abstractions.6.0.7.nupkg.sha512",
     "/home/kolia/.nuget/packages/microsoft.extensions.logging/7.0.0/microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "/home/kolia/.nuget/packages/microsoft.extensions.logging.abstractions/7.0.0/microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "/home/kolia/.nuget/packages/microsoft.extensions.options/7.0.1/microsoft.extensions.options.7.0.1.nupkg.sha512",

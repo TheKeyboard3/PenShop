@@ -290,3 +290,5 @@
 /home/kolia/projects/web/bin/Debug/net7.0/Microsoft.Extensions.Identity.Stores.dll
 /home/kolia/projects/web/bin/Debug/net7.0/Microsoft.Extensions.Options.dll
 /home/kolia/projects/web/obj/Debug/net7.0/PenShop.MvcApplicationPartsAssemblyInfo.cs
+/home/kolia/projects/web/bin/Debug/net7.0/Resources/localization.json
+/home/kolia/projects/web/bin/Debug/net7.0/Askmethat.Aspnet.JsonLocalizer.dll

@@ -1,6 +1,8 @@
 @using Microsoft.AspNetCore.Identity
 @using PenShop.Models
+@using Microsoft.AspNetCore.Mvc.Localization
 
+@inject IViewLocalizer Localizer
 @inject UserManager<IdentityUser> UserManager
 
 @{
@@ -10,10 +12,10 @@
 @model PenShop.Models.RollerballPen
 
 @{
-    ViewData["Title"] = "Rollerball pen details";
+    ViewData["Title"] = Localizer["RollerballPenDetails"];
 }
 
-<h1>Details</h1>
+<h1>@Localizer["Details"]</h1>
 
 <div>
     <h4>Rollerball pen</h4>
@@ -62,12 +64,12 @@
 </div>
 <div>
     @if (user is Administrator){
-        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> <a>|</a>
+        <a asp-action="Edit" asp-route-id="@Model?.Id">@Localizer["Edit"]</a> <a>|</a>
     }
     @if (user is Customer){
-        <a asp-action="Order" asp-route-id="@Model?.Id">Order</a> <a>|</a>
+        <a asp-action="Order" asp-route-id="@Model?.Id">@Localizer["Order"]</a> <a>|</a>
     }else if(user is null){
-        <a>Please register to make an order</a> <a>|</a>
+        <a>@Localizer["RegisterToOrder"]</a> <a>|</a>
     }
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>

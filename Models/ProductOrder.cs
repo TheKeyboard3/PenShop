@@ -6,21 +6,27 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+[Display(Name = "ProductOrder")]
 public abstract class ProductOrder : IValidatableObject
 {
     public int Id{ get; set; }
     public string? CustomerId{ get; set; }
+    [Display(Name = "Customer")]
     public virtual Customer? Customer { get; set; }
     public int? OrderId{ get; set; }
+    [Display(Name = "Order")]
     public virtual Order? Order { get; set; }
     [Required]
     public abstract int ProductId{ get; }
+    [Display(Name = "Product")]
     public abstract Product? Product{ get; }
     [Required]
     [Range(1, 100)]
+    [Display(Name = "Quantity")]
     public int Quantity{ get; set; }
     [Required]
     [DataType (DataType.Currency)]
+    [Display(Name = "Price")]
     public abstract float Price{ get; }
 
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext){

@@ -1,14 +1,17 @@
 @model PenShop.Models.Material
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Delete a material";
+    ViewData["Title"] = Localizer["DeleteMaterial"];
 }
 
-<h1>Delete</h1>
+<h1>@Localizer["Delete"]</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@Localizer["DeleteSure"]</h3>
 <div>
-    <h4>Material</h4>
+    <h4>@Localizer["Material"]</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -22,6 +25,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">@Localizer["BackToList"]</a>
     </form>
 </div>

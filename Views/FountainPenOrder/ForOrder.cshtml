@@ -1,0 +1,50 @@
+@model IEnumerable<PenShop.Models.FountainPenOrder>
+
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["FountainPenOrders"];
+}
+
+<h1>@Localizer["FountainPenOrders"]</h1>
+
+<p>
+    <a asp-controller="ProductOrder" asp-action="ForOrder" asp-route-id="@ViewData["OrderId"]" >@Localizer["ProductOrders"]</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RemoveNib)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pen.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RemoveNib)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Localizer["Details"]</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Localizer["Delete"]</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

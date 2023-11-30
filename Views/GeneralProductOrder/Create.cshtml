@@ -1,10 +1,13 @@
 @model PenShop.Models.GeneralProductOrder
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = $"Ordering {@ViewData["ProductName"]}";
+    ViewData["Title"] = $"{Localizer["Ordering"]} {ViewData["ProductName"]}";
 }
 
-<h1>Ordering @ViewData["ProductName"]</h1>
+<h1>@Localizer["Ordering"] @ViewData["ProductName"]</h1>
 
 <hr />
 <div class="row">
@@ -21,14 +24,14 @@
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Details" asp-controller="Product" asp-route-id="@ViewData["ProductId"]">Back to @ViewData["ProductName"]</a>
+    <a asp-action="Details" asp-controller="Product" asp-route-id="@ViewData["ProductId"]">@Localizer["BackTo"] @ViewData["ProductName"]</a>
 </div>
 
 @section Scripts {

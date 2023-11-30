@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using Microsoft.AspNetCore.Identity;
 
+[Display(Name = "Administrator")]
 public class Administrator : User
 {
 }

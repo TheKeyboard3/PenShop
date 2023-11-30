@@ -34,7 +34,7 @@ namespace PenShop.Controllers
             }
             else if (user is Customer)
             {
-                return View(await penShopContext.Where(x => x.CustomerId == user.Id || x.Order != null && x.Order.CustomerId == user.Id).ToListAsync());
+                return View("ShoppingCart", await penShopContext.Where(x => x.CustomerId == user.Id).ToListAsync());
             }
             else if (user is null)
             {
@@ -43,6 +43,32 @@ namespace PenShop.Controllers
             else
             {
                 return Problem("Unknown user");
+            }
+        }
+
+        // GET: FountainPenOrder/ForOrder/5
+        public async Task<IActionResult> ForOrder(int? id)
+        {
+            var penShopContext = _context.FountainPenOrder.Include(p => p.Customer).Include(p => p.Order).Include(g => g.Pen);
+            if(id is null)
+                return NotFound();
+
+            var order = _context.Order.Find(id);
+            if(order is null)
+                return NotFound();
+
+            var user = GetUser();
+            if(user is null)
+                return NotFound();
+
+            if (user is not Administrator && order.CustomerId != user.Id)
+            {
+                return Unauthorized();
+            }
+            else
+            {
+                ViewData["OrderId"] = id;
+                return View(await penShopContext.Where(x => x.OrderId == order.Id).ToListAsync());
             }
         }
 

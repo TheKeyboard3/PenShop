@@ -1,10 +1,13 @@
 @model PenShop.Models.FountainPenOrder
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = $"Ordering {@ViewData["PenName"]}";
+    ViewData["Title"] =  $"{Localizer["Ordering"]} {ViewData["PenName"]}";
 }
 
-<h1>Ordering @ViewData["PenName"]</h1>
+<h1>@Localizer["Ordering"] @ViewData["PenName"]</h1>
 
 <hr />
 <div class="row">
@@ -33,7 +36,7 @@
 </div>
 
 <div>
-    <a asp-action="Details" asp-controller="Product" asp-route-id="@ViewData["PenId"]">Back to @ViewData["PenName"]</a>
+    <a asp-action="Details" asp-controller="Product" asp-route-id="@ViewData["PenId"]">@Localizer["BackTo"] @ViewData["PenName"]</a>
 </div>
 
 @section Scripts {

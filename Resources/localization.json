@@ -1,0 +1,1220 @@
+﻿{
+    "Name": {
+        "Values": {
+            "en": "Name",
+            "uk": "Назва",
+        }
+    },
+    "Price": {
+        "Values": {
+            "en": "Price",
+            "uk": "Ціна",
+        }
+    },
+    "Description": {
+        "Values": {
+            "en": "Description",
+            "uk": "Опис",
+        }
+    },
+    "Image": {
+        "Values": {
+            "en": "Image",
+            "uk": "Зображення",
+        }
+    },
+    "Height": {
+        "Values": {
+            "en": "Height",
+            "uk": "Висота",
+        }
+    },
+    "Capacity": {
+        "Values": {
+            "en": "Capacity",
+            "uk": "Ємність",
+        }
+    },
+    "CartridgeStandard": {
+        "Values": {
+            "en": "Cartridge іtandard",
+            "uk": "Стандарт картриджів",
+        }
+    },
+    "PersonName": {
+        "Values": {
+            "en": "Name",
+            "uk": "Ім'я",
+        }
+    },
+    "Surname": {
+        "Values": {
+            "en": "Surname",
+            "uk": "Прізвище",
+        }
+    },
+    "DefaultShippingAddress": {
+        "Values": {
+            "en": "Default Shipping Address",
+            "uk": "Адреса доставки за замовчуванням",
+        }
+    },
+    "FullName": {
+        "Values": {
+            "en": "Full name",
+            "uk": "Повне ім'я",
+        }
+    },
+    "Nib": {
+        "Values": {
+            "en": "Nib",
+            "uk": "Перо",
+        }
+    },
+    "RemoveNib": {
+        "Values": {
+            "en": "Remove the nib",
+            "uk": "Прибрати перо",
+        }
+    },
+    "Pen": {
+        "Values": {
+            "en": "Pen",
+            "uk": "Ручка",
+        }
+    },
+    "Product": {
+        "Values": {
+            "en": "Product",
+            "uk": "Товар",
+        }
+    },
+    "Colour": {
+        "Values": {
+            "en": "Colour",
+            "uk": "Колір",
+        }
+    },
+    "BodyMaterial": {
+        "Values": {
+            "en": "Body material",
+            "uk": "Матеріал корпусу",
+        }
+    },
+    "TipMaterial": {
+        "Values": {
+            "en": "Tip material",
+            "uk": "Матеріал кінця",
+        }
+    },
+    "TipDiameter": {
+        "Values": {
+            "en": "Tip diameter",
+            "uk": "Діаметр кінця",
+        }
+    },
+    "Hardness": {
+        "Values": {
+            "en": "Hardness",
+            "uk": "Твердість",
+        }
+    },
+    "Customer": {
+        "Values": {
+            "en": "Customer",
+            "uk": "Покупець",
+        }
+    },
+    "Date": {
+        "Values": {
+            "en": "Date",
+            "uk": "Дата",
+        }
+    },
+    "ShippingAddress": {
+        "Values": {
+            "en": "Shipping address",
+            "uk": "Адреса доставки",
+        }
+    },
+    "Material": {
+        "Values": {
+            "en": "Material",
+            "uk": "Матеріал",
+        }
+    },
+    "Order": {
+        "Values": {
+            "en": "Order",
+            "uk": "Замовлення",
+        }
+    },
+    "Quantity": {
+        "Values": {
+            "en": "Quantity",
+            "uk": "Кількість",
+        }
+    },
+    "RollerballDiameter": {
+        "Values": {
+            "en": "Rollerball diameter",
+            "uk": "Діаметр ролера",
+        }
+    },
+    "EmailConfirmed": {
+        "Values": {
+            "en": "Email Confirmed",
+            "uk": "Електронну пошту підтверджено",
+        }
+    },
+    "LockoutEnd": {
+        "Values": {
+            "en": "Lockout end",
+            "uk": "Кінець блокування",
+        }
+    },
+    "LockoutEnabled": {
+        "Values": {
+            "en": "Lockout enabled",
+            "uk": "Блокування увімкнене",
+        }
+    },
+    "FailedLogins": {
+        "Values": {
+            "en": "Failed logins",
+            "uk": "Невдалих спроб входу",
+        }
+    },
+    "User": {
+        "Values": {
+            "en": "User",
+            "uk": "Користувач",
+        }
+    },
+    "Accessory": {
+        "Values": {
+            "en": "Accessory",
+            "uk": "Аксесуар",
+        }
+    },
+    "Administrator": {
+        "Values": {
+            "en": "Administrator",
+            "uk": "Адміністратор",
+        }
+    },
+    "Converter": {
+        "Values": {
+            "en": "Converter",
+            "uk": "Конвертер",
+        }
+    },
+    "FountainPen": {
+        "Values": {
+            "en": "Fountain pen",
+            "uk": "Пірйова ручка",
+        }
+    },
+    "FountainPenOrder": {
+        "Values": {
+            "en": "Fountain pen order",
+            "uk": "Замовлення пірйової ручки",
+        }
+    },
+    "GeneralProductOrder": {
+        "Values": {
+            "en": "Other product order",
+            "uk": "Замовлення на інший товар",
+        }
+    },
+    "Ink": {
+        "Values": {
+            "en": "Ink",
+            "uk": "Чорнило",
+        }
+    },
+    "InkCartridge": {
+        "Values": {
+            "en": "Ink сartridge",
+            "uk": "Чорнильний картридж",
+        }
+    },
+    "InkColour": {
+        "Values": {
+            "en": "Ink colour",
+            "uk": "Колір чорнила",
+        }
+    },
+    "NibMaterial": {
+        "Values": {
+            "en": "Nib material",
+            "uk": "Матеріал пера",
+        }
+    },
+    "ProductOrder": {
+        "Values": {
+            "en": "Product order",
+            "uk": "Замовлення на товар",
+        }
+    },
+    "RollerballPen": {
+        "Values": {
+            "en": "Rollerball pen",
+            "uk": "Ручка-ролер",
+        }
+    },
+    "Stand": {
+        "Values": {
+            "en": "Stand",
+            "uk": "Підставка",
+        }
+    },
+    "Products": {
+        "Values": {
+            "en": "Products",
+            "uk": "Товари",
+        }
+    },
+    "Accessories": {
+        "Values": {
+            "en": "Accessories",
+            "uk": "Аксесуари",
+        }
+    },
+    "Converters": {
+        "Values": {
+            "en": "Converters",
+            "uk": "Конвертери",
+        }
+    },
+    "Nibs": {
+        "Values": {
+            "en": "Nibs",
+            "uk": "Пера",
+        }
+    },
+    "Stands": {
+        "Values": {
+            "en": "Stands",
+            "uk": "Підставки",
+        }
+    },
+    "Create": {
+        "Values": {
+            "en": "Create",
+            "uk": "Створити",
+        }
+    },
+    "Password": {
+        "Values": {
+            "en": "Password",
+            "uk": "Пароль",
+        }
+    },
+    "ConfirmPassword": {
+        "Values": {
+            "en": "Confirm password",
+            "uk": "Підтвердіть пароль",
+        }
+    },
+    "BackToList": {
+        "Values": {
+            "en": "Back to list",
+            "uk": "Повернутися до списку",
+        }
+    },
+    "Delete": {
+        "Values": {
+            "en": "Delete",
+            "uk": "Видалити",
+        }
+    },
+    "DeleteSure": {
+        "Values": {
+            "en": "Are you sure you want to delete this?",
+            "uk": "Ви впевнені, що ви хочете це видалити?",
+        }
+    },
+    "Details": {
+        "Values": {
+            "en": "Details",
+            "uk": "Подробиці",
+        }
+    },
+    "Edit": {
+        "Values": {
+            "en": "Edit",
+            "uk": "Редагувати",
+        }
+    },
+    "Administrators": {
+        "Values": {
+            "en": "Administrators",
+            "uk": "Адміністратори",
+        }
+    },
+    "CreateNew": {
+        "Values": {
+            "en": "Create new",
+            "uk": "Створити новий",
+        }
+    },
+    "CreateCartridgeStandard": {
+        "Values": {
+            "en": "Create a cartridge standard",
+            "uk": "Створити стандарт картриджів",
+        }
+    },
+    "DeleteCartridgeStandard": {
+        "Values": {
+            "en": "Delete cartridge standard",
+            "uk": "Видалити стандарт картриджів",
+        }
+    },
+    "CartridgeStandardDetails": {
+        "Values": {
+            "en": "Cartridge standard details",
+            "uk": "Подробиці про стандарт картриджів",
+        }
+    },
+    "EditCartridgeStandard": {
+        "Values": {
+            "en": "Edit cartridge standard",
+            "uk": "Редагувати стандарт картриджів",
+        }
+    },
+    "Save": {
+        "Values": {
+            "en": "Save",
+            "uk": "Зберегти",
+        }
+    },
+    "CartridgeStandards": {
+        "Values": {
+            "en": "Cartridge іtandards",
+            "uk": "Стандарти картриджів",
+        }
+    },
+    "CreateConverter": {
+        "Values": {
+            "en": "Create a converter",
+            "uk": "Створити конвертер",
+        }
+    },
+    "DeleteConverter": {
+        "Values": {
+            "en": "Delete a converter",
+            "uk": "Видалити конвертер",
+        }
+    },
+    "ConverterDetails": {
+        "Values": {
+            "en": "Converter details",
+            "uk": "Подробиці конвертера",
+        }
+    },
+    "RegisterToOrder": {
+        "Values": {
+            "en": "Please register to create orders",
+            "uk": "Зареєструйтесь для створення замовлень",
+        }
+    },
+    "EditConverter": {
+        "Values": {
+            "en": "Edit сonverter",
+            "uk": "Редагувати конвертер",
+        }
+    },
+    "ChooseReplacementFile": {
+        "Values": {
+            "en": "Choose a replacement file",
+            "uk": "Оберіть файл для заміни",
+        }
+    },
+    "Converters": {
+        "Values": {
+            "en": "Converters",
+            "uk": "Конвертери",
+        }
+    },
+    "Type": {
+        "Values": {
+            "en": "Type",
+            "uk": "Тип",
+        }
+    },
+    "Customers": {
+        "Values": {
+            "en": "Customers",
+            "uk": "Покупці",
+        }
+    },
+    "CreateFountainPen": {
+        "Values": {
+            "en": "Create a fountain pen",
+            "uk": "Створити пірйову ручку",
+        }
+    },
+    "DeleteFountainPen": {
+        "Values": {
+            "en": "Delete a fountain pen",
+            "uk": "Видалити пірйову ручку",
+        }
+    },
+    "FountainPenDetails": {
+        "Values": {
+            "en": "Fountain pen details",
+            "uk": "Подробиці пірйової ручки",
+        }
+    },
+    "EditFountainPen": {
+        "Values": {
+            "en": "Edit fountain pen",
+            "uk": "Редагувати пірйову ручку",
+        }
+    },
+    "FountainPens": {
+        "Values": {
+            "en": "Fountain pens",
+            "uk": "Пірйові ручки",
+        }
+    },
+    "Pens": {
+        "Values": {
+            "en": "Pens",
+            "uk": "Ручки",
+        }
+    },
+    "Ordering": {
+        "Values": {
+            "en": "Ordering",
+            "uk": "Замовлення",
+        }
+    },
+    "BackTo": {
+        "Values": {
+            "en": "Back to",
+            "uk": "Повернутися до",
+        }
+    },
+    "DeleteFountainPenOrder": {
+        "Values": {
+            "en": "Delete a fountain pen order",
+            "uk": "Видалити замовлення пірйової ручки",
+        }
+    },
+    "FountainPenOrderDetails": {
+        "Values": {
+            "en": "Fountain pen order details",
+            "uk": "Подробиці замовлення пірйової ручки",
+        }
+    },
+    "EditFountainPenOrder": {
+        "Values": {
+            "en": "Edit a fountain pen order",
+            "uk": "Редагувати замовлення пірйової ручки",
+        }
+    },
+    "Select": {
+        "Values": {
+            "en": "---Select---",
+            "uk": "---Оберіть---",
+        }
+    },
+    "FountainPenOrders": {
+        "Values": {
+            "en": "Fountain pen orders",
+            "uk": "Замовлення прійових ручок",
+        }
+    },
+    "ProductOrders": {
+        "Values": {
+            "en": "Product orders",
+            "uk": "Замовлення товарів",
+        }
+    },
+    "FountainPenShoppingCart": {
+        "Values": {
+            "en": "Fountain pen shopping cart",
+            "uk": "Кошик пірйових ручок",
+        }
+    },
+    "DeleteOtherProductOrder": {
+        "Values": {
+            "en": "Delete an other product order",
+            "uk": "Видалити замовлення на інший товар",
+        }
+    },
+    "OtherProductOrder": {
+        "Values": {
+            "en": "Other product order",
+            "uk": "Замовлення на інший товар",
+        }
+    },
+    "OtherProductOrderDetails": {
+        "Values": {
+            "en": "Other product order details",
+            "uk": "Подробиці замовлення на інший товар",
+        }
+    },
+    "EditOtherProductOrder": {
+        "Values": {
+            "en": "Edit an other product order",
+            "uk": "Редагувати замовлення на інший товар",
+        }
+    },
+    "OtherProductOrders": {
+        "Values": {
+            "en": "Other product orders",
+            "uk": "Замовлення на інші товари",
+        }
+    },
+    "OtherProductShoppingCart": {
+        "Values": {
+            "en": "Other product shopping cart",
+            "uk": "Кошик інших товарів",
+        }
+    },
+    "ShoppingCart": {
+        "Values": {
+            "en": "Shopping cart",
+            "uk": "Кошик",
+        }
+    },
+    "InkCartridges": {
+        "Values": {
+            "en": "Ink cartridges",
+            "uk": "Чорнильні картриджі",
+        }
+    },
+    "InkBottles": {
+        "Values": {
+            "en": "Ink bottles",
+            "uk": "Пляшки чорнила",
+        }
+    },
+    "CreateInkBottle": {
+        "Values": {
+            "en": "Create ink bottle",
+            "uk": "Створити пляшку чорнила",
+        }
+    },
+    "InkBottle": {
+        "Values": {
+            "en": "Ink Bottle",
+            "uk": "Створити пляшку чорнила",
+        }
+    },
+    "DeleteInkBottle": {
+        "Values": {
+            "en": "Delete an ink bottle",
+            "uk": "Видалити пляшку чорнила",
+        }
+    },
+    "InkBottleDetails": {
+        "Values": {
+            "en": "Ink bottle details",
+            "uk": "Подробиці пляшки чорнила",
+        }
+    },
+    "EditInkBottle": {
+        "Values": {
+            "en": "Edit an ink bottle",
+            "uk": "Редагувати пляшку чорнила",
+        }
+    },
+    "CreateInkCartridge": {
+        "Values": {
+            "en": "Create an ink cartridge",
+            "uk": "Створити чорнильний картридж",
+        }
+    },
+    "DeleteInkCartridge": {
+        "Values": {
+            "en": "Delete an ink cartridge",
+            "uk": "Видалити чорнильний картридж",
+        }
+    },
+    "InkCartridgeDetails": {
+        "Values": {
+            "en": "Ink cartridge details",
+            "uk": "Подробиці чорнильного картриджу",
+        }
+    },
+    "EditInkCartridge": {
+        "Values": {
+            "en": "Edit an ink cartridge",
+            "uk": "Редагувати чорнильний картридж",
+        }
+    },
+    "InkCartridges": {
+        "Values": {
+            "en": "Ink cartridges",
+            "uk": "Чорнильні картриджі",
+        }
+    },
+    "CreateInkColour": {
+        "Values": {
+            "en": "Create an ink colour",
+            "uk": "Створити колір чорнила",
+        }
+    },
+    "DeleteInkColour": {
+        "Values": {
+            "en": "Delete an ink colour",
+            "uk": "Видалити колір чорнила",
+        }
+    },
+    "InkColourDetails": {
+        "Values": {
+            "en": "Ink colour details",
+            "uk": "Подробиці кольору чорнила",
+        }
+    },
+    "EditInkColour": {
+        "Values": {
+            "en": "Edit an ink colour",
+            "uk": "Редагувати колір чорнила",
+        }
+    },
+    "InkColours": {
+        "Values": {
+            "en": "Ink colours",
+            "uk": "Кольори чорнила",
+        }
+    },
+    "CreateMaterial": {
+        "Values": {
+            "en": "Create a material",
+            "uk": "Створити матеріал",
+        }
+    },
+    "DeleteMaterial": {
+        "Values": {
+            "en": "Delete a material",
+            "uk": "Видалити матеріал",
+        }
+    },
+    "MaterialDetails": {
+        "Values": {
+            "en": "Material details",
+            "uk": "Подробиці матеріалу",
+        }
+    },
+    "EditMaterial": {
+        "Values": {
+            "en": "Edit a material",
+            "uk": "Редагувати матеріал",
+        }
+    },
+    "Material": {
+        "Values": {
+            "en": "Material",
+            "uk": "Матеріал",
+        }
+    },
+    "Materials": {
+        "Values": {
+            "en": "Materials",
+            "uk": "Матеріали",
+        }
+    },
+    "CreateNib": {
+        "Values": {
+            "en": "Create a nib",
+            "uk": "Створити перо",
+        }
+    },
+    "DeleteNib": {
+        "Values": {
+            "en": "Delete a nib",
+            "uk": "Видалити перо",
+        }
+    },
+    "NibDetails": {
+        "Values": {
+            "en": "Nib details",
+            "uk": "Подробиці пера",
+        }
+    },
+    "EditNib": {
+        "Values": {
+            "en": "Edit a nib",
+            "uk": "Редагувати перо",
+        }
+    },
+    "Nibs": {
+        "Values": {
+            "en": "Nibs",
+            "uk": "Пера",
+        }
+    },
+    "CreateNibProduct": {
+        "Values": {
+            "en": "Create a nib(product)",
+            "uk": "Створити перо(товар)",
+        }
+    },
+    "DeleteNibProduct": {
+        "Values": {
+            "en": "Delete a nib(product)",
+            "uk": "Створити перо(товар)",
+        }
+    },
+    "NibProductDetails": {
+        "Values": {
+            "en": "Nib(product) details",
+            "uk": "Подробиці пера(товар)",
+        }
+    },
+    "EditNibProduct": {
+        "Values": {
+            "en": "Edit a nib(product)",
+            "uk": "Редагувати перо(товар)",
+        }
+    },
+    "NibProducts": {
+        "Values": {
+            "en": "Nibs(product)",
+            "uk": "Пера(товар)",
+        }
+    },
+    "CreateNibMaterial": {
+        "Values": {
+            "en": "Create a nib material",
+            "uk": "Створити матеріал пера",
+        }
+    },
+    "DeleteNibMaterial": {
+        "Values": {
+            "en": "Delete a nib material",
+            "uk": "Видалити матеріал пера",
+        }
+    },
+    "NibMaterialDetails": {
+        "Values": {
+            "en": "Nib material details",
+            "uk": "Подробиці матеріалу пера",
+        }
+    },
+    "EditNibMaterial": {
+        "Values": {
+            "en": "Edit nib material",
+            "uk": "Редагувати матеріал пера",
+        }
+    },
+    "NibMaterials": {
+        "Values": {
+            "en": "Nib materials",
+            "uk": "Матеріали пера",
+        }
+    },
+    "CreateOrder": {
+        "Values": {
+            "en": "Create an order",
+            "uk": "Створити замовлення",
+        }
+    },
+    "DeleteOrder": {
+        "Values": {
+            "en": "Delete an order",
+            "uk": "Видалити замовлення",
+        }
+    },
+    "Orders": {
+        "Values": {
+            "en": "Orders",
+            "uk": "Замовлення",
+        }
+    },
+    "CreateRollerballPen": {
+        "Values": {
+            "en": "Create a rollerball pen",
+            "uk": "Створити ручку-ролер",
+        }
+    },
+    "RollerballPenDetails": {
+        "Values": {
+            "en": "Rollerball pen details",
+            "uk": "Подробиці ручки-ролера",
+        }
+    },
+    "DeleteRollerballPen": {
+        "Values": {
+            "en": "Delete a rollerball pen",
+            "uk": "Видалити ручку-ролер",
+        }
+    },
+    "EditRollerballPen": {
+        "Values": {
+            "en": "Edit a rollerball pen",
+            "uk": "Редагувати ручку ролер",
+        }
+    },
+    "RollerballPens": {
+        "Values": {
+            "en": "Rollerball pens",
+            "uk": "Ручки-ролери",
+        }
+    },
+    "Hello": {
+        "Values": {
+            "en": "Hello",
+            "uk": "Вітаю",
+        }
+    },
+    "Logout": {
+        "Values": {
+            "en": "Logout",
+            "uk": "Вийти",
+        }
+    },
+    "DeleteStand": {
+        "Values": {
+            "en": "Delete a stand",
+            "uk": "Видалити підставку",
+        }
+    },
+    "StandDetails": {
+        "Values": {
+            "en": "Stand details",
+            "uk": "Подробиці підставки",
+        }
+    },
+    "EditStand": {
+        "Values": {
+            "en": "Edit a stand",
+            "uk": "Редагувати підставку",
+        }
+    },
+    "DeleteStand": {
+        "Values": {
+            "en": "Delete a stand",
+            "uk": "Видалити підставку",
+        }
+    },
+    "Stands": {
+        "Values": {
+            "en": "Stands",
+            "uk": "Підставки",
+        }
+    },
+    "NibTipDiameter": {
+        "Values": {
+            "en": "Nib tip diameter",
+            "uk": "Діаметр кінця пера",
+        }
+    },
+    "NibBodyMaterial": {
+        "Values": {
+            "en": "Nib body material",
+            "uk": "Матеріал пера",
+        }
+    },
+    "NibTipMaterial": {
+        "Values": {
+            "en": "Nib tip material",
+            "uk": "Матеріал кінця пера",
+        }
+    },
+    "OrderProduct": {
+        "Values": {
+            "en": "Order",
+            "uk": "Замовити",
+        }
+    },
+    "ManageAccount": {
+        "Values": {
+            "en": "Manage account",
+            "uk": "Керування обліковим записом",
+        }
+    },
+    "AccountSettings": {
+        "Values": {
+            "en": "Account settings",
+            "uk": "Налаштування облікового запису",
+        }
+    },
+    "Profile": {
+        "Values": {
+            "en": "Profile",
+            "uk": "Обліковий запис",
+        }
+    },
+    "Email": {
+        "Values": {
+            "en": "Email",
+            "uk": "Електронна пошта",
+        }
+    },
+    "Password": {
+        "Values": {
+            "en": "Password",
+            "uk": "Пароль",
+        }
+    },
+    "ShippingDetails": {
+        "Values": {
+            "en": "Shipping information",
+            "uk": "Інформація доставки",
+        }
+    },
+    "ExternalLogins": {
+        "Values": {
+            "en": "External logins",
+            "uk": "Інші методи входу",
+        }
+    },
+    "Profile": {
+        "Values": {
+            "en": "Profile",
+            "uk": "Обліковий запис",
+        }
+    },
+    "TFA": {
+        "Values": {
+            "en": "2 factor authentication",
+            "uk": "2-факторна автентифікація",
+        }
+    },
+    "PersonalData": {
+        "Values": {
+            "en": "Personal data",
+            "uk": "Особисті дані",
+        }
+    },
+    "ChangePassword": {
+        "Values": {
+            "en": "Change password",
+            "uk": "Змінити пароль",
+        }
+    },
+    "EnterOldPassword": {
+        "Values": {
+            "en": "Enter the old password",
+            "uk": "Введіть старий пароль",
+        }
+    },
+    "EnterNewPassword": {
+        "Values": {
+            "en": "Enter the new password",
+            "uk": "Введіть новий пароль",
+        }
+    },
+    "ConfirmNewPassword": {
+        "Values": {
+            "en": "Confirm the new password",
+            "uk": "Підтвердьте новий пароль",
+        }
+    },
+    "ConfirmPassword": {
+        "Values": {
+            "en": "Confirm password",
+            "uk": "Підтвердьте пароль",
+        }
+    },
+    "UpdatePassword": {
+        "Values": {
+            "en": "Update password",
+            "uk": "Змінити пароль",
+        }
+    },
+    "ChangeShippingDetails": {
+        "Values": {
+            "en": "Change shipping information",
+            "uk": "Змінити інформацію доставки",
+        }
+    },
+    "UpdateDeliveryDetails": {
+        "Values": {
+            "en": "Change shipping information",
+            "uk": "Змінити інформацію доставки",
+        }
+    },
+    "DeletePersonalData": {
+        "Values": {
+            "en": "Delete personal data",
+            "uk": "Видалити особисті дані",
+        }
+    },
+    "DeletePersonalDataWarning": {
+        "Values": {
+            "en": "Deleting this data will permanently remove your account, and this cannot be recovered.",
+            "uk": "Видалення цих даних назавжди видалить ваш обліковий запис і його буде неможливо відновити.",
+        }
+    },
+    "EnterCurrentPassword": {
+        "Values": {
+            "en": "Enter the current password",
+            "uk": "Введіть поточний пароль",
+        }
+    },
+    "DeleteDataAndClose": {
+        "Values": {
+            "en": "Delete data and close",
+            "uk": "Видалити дані та закрити",
+        }
+    },
+    "Disable2FA": {
+        "Values": {
+            "en": "Disable 2 factor authentication",
+            "uk": "Відключити 2-факторну автентифікацію",
+        }
+    },
+    "DownloadYourData": {
+        "Values": {
+            "en": "Download your data",
+            "uk": "Завантажити ваші дані",
+        }
+    },
+    "ManageEmail": {
+        "Values": {
+            "en": "Manage email",
+            "uk": "Керувати електронною поштою",
+        }
+    },
+    "EnterEmail": {
+        "Values": {
+            "en": "Enter email",
+            "uk": "Введіть електронну пошту",
+        }
+    },
+    "EnterNewEmail": {
+        "Values": {
+            "en": "Enter new email",
+            "uk": "Введіть нову електронну пошту",
+        }
+    },
+    "NewEmail": {
+        "Values": {
+            "en": "New email",
+            "uk": "Нова електронна пошта",
+        }
+    },
+    "SendVerificationEmail": {
+        "Values": {
+            "en": "Send a verification email",
+            "uk": "Відправити електронного листа для підтвердження",
+        }
+    },
+    "ChangeEmail": {
+        "Values": {
+            "en": "Change email",
+            "uk": "Змінити електронну пошту",
+        }
+    },
+    "ChooseUsername": {
+        "Values": {
+            "en": "Choose username",
+            "uk": "Оберіть ім'я користувача",
+        }
+    },
+    "EnterPhoneNumber": {
+        "Values": {
+            "en": "Enter phone number",
+            "uk": "ВВедіть номер телефону",
+        }
+    },
+    "PersonalData": {
+        "Values": {
+            "en": "Personal data",
+            "uk": "Особисті дані",
+        }
+    },
+    "Download": {
+        "Values": {
+            "en": "Download",
+            "uk": "Завантажити",
+        }
+    },
+    "Register": {
+        "Values": {
+            "en": "Register",
+            "uk": "Зареєструватись",
+        }
+    },
+    "InvalidLoginAttempt": {
+        "Values": {
+            "en": "Invalid login attempt",
+            "uk": "Невдала спроба входу",
+        }
+    },
+    "LogIn": {
+        "Values": {
+            "en": "Log in",
+            "uk": "Увійти",
+        }
+    },
+    "RememberMe": {
+        "Values": {
+            "en": "Remember me",
+            "uk": "Запам'ятати мене",
+        }
+    },
+    "UseLocalAccount": {
+        "Values": {
+            "en": "Use a local account to log in.",
+            "uk": "Вхід з використанням локального облікового запису",
+        }
+    },
+    "NewPasswordError": {
+        "Values": {
+            "en": "The {0} must be at least {2} and at max {1} characters long.",
+            "uk": "{0} повинен бути від {2} до {1} символів",
+        }
+    },
+    "ConfirmPasswordError": {
+        "Values": {
+            "en": "The new password and confirmation password do not match.",
+            "uk": "Новий пароль не збігається з його підтвердженням.",
+        }
+    },
+    "PasswordChanged": {
+        "Values": {
+            "en": "Your password has been changed.",
+            "uk": "Ваш пароль було змінено.",
+        }
+    },
+    "DeliveryInfoChanged": {
+        "Values": {
+            "en": "Your delivery information has been changed.",
+            "uk": "Ваша інформація доставки була змінена.",
+        }
+    },
+    "UnexpectedError": {
+        "Values": {
+            "en": "Unexpected error",
+            "uk": "Неочікувана помилка.",
+        }
+    },
+    "ProfileUpdated": {
+        "Values": {
+            "en": "Your profile has been updated.",
+            "uk": "Ваш обліковий запис було оновлено",
+        }
+    },
+    "Username": {
+        "Values": {
+            "en": "Username",
+            "uk": "Ім'я користувача",
+        }
+    },
+    "PhoneNumber": {
+        "Values": {
+            "en": "Phone number",
+            "uk": "Номер телефону",
+        }
+    },
+    "ChooseLanguage": {
+        "Values": {
+            "en": "Choose a language",
+            "uk": "Оберіть мову",
+        }
+    },
+    "ChooseLanguage2": {
+        "Values": {
+            "en": "Choose a language",
+            "uk": "Обрати мову",
+        }
+    },
+}

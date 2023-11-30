@@ -13,7 +13,7 @@ using PenShop.Models;
 
 namespace PenShop.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = "Administrator")]
     public class CustomerController : Controller
     {
         private readonly PenShopContext _context;

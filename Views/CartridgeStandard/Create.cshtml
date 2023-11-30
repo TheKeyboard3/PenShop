@@ -1,12 +1,15 @@
 @model PenShop.Models.CartridgeStandard
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Create a cartridge standard";
+    ViewData["Title"] = Localizer["CreateCartridgeStandard"];
 }
 
-<h1>Create</h1>
+<h1>@Localizer["Create"]</h1>
 
-<h4>Cartridge standard</h4>
+<h4>@Localizer["CartridgeStandard"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,14 +21,14 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["Create"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>
 
 @section Scripts {

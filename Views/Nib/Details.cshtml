@@ -1,13 +1,16 @@
 @model PenShop.Models.Nib
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Nib details";
+    ViewData["Title"] = Localizer["NibDetails"];
 }
 
-<h1>Details</h1>
+<h1>@Localizer["Details"]</h1>
 
 <div>
-    <h4>Nib</h4>
+    <h4>@Localizer["Nib"]</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -37,6 +40,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">@Localizer["Edit"]</a> |
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>

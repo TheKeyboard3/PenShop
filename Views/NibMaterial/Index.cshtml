@@ -1,13 +1,16 @@
 @model IEnumerable<PenShop.Models.NibMaterial>
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Nib materials";
+    ViewData["Title"] = Localizer["NibMaterials"];
 }
 
-<h1>Nib materials</h1>
+<h1>@Localizer["NibMaterials"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">@Localizer["CreateNew"]</a>
 </p>
 <table class="table">
     <thead>
@@ -31,9 +34,9 @@
                 @Html.DisplayFor(modelItem => item.Hardness)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">@Localizer["Details"]</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">@Localizer["Delete"]</a>
             </td>
         </tr>
 }

@@ -3,25 +3,28 @@ namespace PenShop.Models;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
+[Display(Name = "Nib")]
 public class Nib
 {
     public int Id { get; set; }
     [Required]
     public int BodyMaterialId{ get; set; }
-    [Display(Name = "Body material")]
+    [Display(Name = "BodyMaterial")]
     public virtual NibMaterial? BodyMaterial{ get; set; }
     [Required]
     public int TipMaterialId{ get; set; }
-    [Display(Name = "Tip material")]
+    [Display(Name = "TipMaterial")]
     public virtual NibMaterial? TipMaterial{ get; set; }
     [Required]
-    [Display(Name = "Tip diameter")]
     [Range(1,10)]
+    [Display(Name = "TipDiameter")]
     public float TipDiameter{ get; set; }
     [Required]
     [DataType (DataType.Currency)]
     [Range(1,10000)]
+    [Display(Name = "Price")]
     public float Price{ get; set; }
+    [Display(Name = "Name")]
     public string Name {
         get{
             string bodyMaterialName = BodyMaterial is not null ? BodyMaterial!.Name! : "";

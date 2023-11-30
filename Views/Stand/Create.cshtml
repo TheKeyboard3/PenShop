@@ -1,10 +1,13 @@
 @model PenShop.Models.Stand
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
     ViewData["Title"] = "Create a stand";
 }
 
-<h1>Create</h1>
+<h1>Localizer["Create"]</h1>
 
 <h4>Stand</h4>
 <hr />
@@ -47,7 +50,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>
 
 @section Scripts {

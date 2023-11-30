@@ -2,15 +2,40 @@ using PenShop.Authentication;
 using PenShop.Data;
 using PenShop.Controllers;
 using PenShop.Models;
+using PenShop.Middleware;
+using Askmethat.Aspnet.JsonLocalizer.Extensions;
+using Askmethat.Aspnet.JsonLocalizer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Text;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("PenShopContextConnection") ?? throw new InvalidOperationException("Connection string 'PenShopContextConnection' not found.");
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddJsonLocalization(options => {
+        options.CacheDuration = TimeSpan.FromMinutes(15);
+        options.ResourcesPath = "Resources";
+        options.FileEncoding = Encoding.GetEncoding("UTF-8");
+        options.SupportedCultureInfos = new HashSet<CultureInfo>()
+        {
+          new CultureInfo("en"),
+          new CultureInfo("uk")
+        };
+    });
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[] { "en", "uk" };
+    options.SetDefaultCulture(supportedCultures[0])
+        .AddSupportedCultures(supportedCultures)
+        .AddSupportedUICultures(supportedCultures);
+});
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<PenShopContext>(b => b.UseLazyLoadingProxies(), optionsLifetime: ServiceLifetime.Singleton);
@@ -60,6 +85,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseLanguageMiddleware();
 
 app.MapControllerRoute(
     name: "generalProductOrderCreate",

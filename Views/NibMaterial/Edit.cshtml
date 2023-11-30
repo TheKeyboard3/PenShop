@@ -1,12 +1,15 @@
 @model PenShop.Models.NibMaterial
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Edit a nib material";
+    ViewData["Title"] = Localizer["EditNibMaterial"];
 }
 
-<h1>Edit</h1>
+<h1>@Localizer["Edit"]</h1>
 
-<h4>Nib material</h4>
+<h4>@Localizer["NibMaterial"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,14 +27,14 @@
                 <span asp-validation-for="Hardness" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>
 
 @section Scripts {

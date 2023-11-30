@@ -1,6 +1,8 @@
 @using Microsoft.AspNetCore.Identity
 @using PenShop.Models
+@using Microsoft.AspNetCore.Mvc.Localization
 
+@inject IViewLocalizer Localizer
 @inject UserManager<IdentityUser> UserManager
 
 @{
@@ -17,10 +19,10 @@
     </div>
     <dl class="row">
         <dt class = "col-sm-6">
-            Type
+            @Localizer["Type"]
         </dt>
         <dd class = "col-sm-6">
-            Ink bottle
+            @Localizer["InkBottle"]
         </dd>
     </dl>
     <dl class="row">
@@ -57,23 +59,23 @@
     </dl>
     <div class="row">
         <div class = "col-sm-4">
-            <a asp-action="Details" asp-route-id="@Model?.Id">Details</a>
+            <a asp-action="Details" asp-route-id="@Model?.Id">@Localizer["Details"]</a>
         </div>
         @if (user is Customer){
             <div class = "col-sm-8">
-                <a asp-action="Order" asp-route-id="@Model?.Id">Order</a>
+                <a asp-action="Order" asp-route-id="@Model?.Id">@Localizer["OrderProduct"]</a>
             </div>
         }else if(user is null){
             <div class = "col-sm-8">
-                <a>Please register to make an order</a>
+                <a>@Localizer["RegisterToOrder"]</a>
             </div>
         }
         @if (user is Administrator){
             <div class = "col-sm-4">
-                <a asp-action="Delete" asp-route-id="@Model?.Id">Delete</a>
+                <a asp-action="Delete" asp-route-id="@Model?.Id">@Localizer["Delete"]</a>
             </div>
             <div class = "col-sm-4">
-                <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+                <a asp-action="Edit" asp-route-id="@Model?.Id">@Localizer["Edit"]</a>
             </div>
         }
     </div>

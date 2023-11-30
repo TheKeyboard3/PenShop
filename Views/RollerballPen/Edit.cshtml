@@ -1,12 +1,15 @@
 @model PenShop.Models.RollerballPen
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Edit a rollerball pen";
+    ViewData["Title"] = Localizer["EditRollerballPen"];
 }
 
-<h1>Edit</h1>
+<h1>@Localizer["Edit"]</h1>
 
-<h4>Rollerball pen</h4>
+<h4>@Localizer["RollerballPen"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -50,19 +53,19 @@
                 <label asp-for="ImageFile" class="control-label"></label>
                 <div class="custom-file">
                     <input asp-for="ImageFile" class="custom-file-input" id="ImageFile">
-                    <label class="custom-file-label" for="ImageFile">Choose a replacement file</label>
+                    <label class="custom-file-label" for="ImageFile">@Localizer["ChooseReplacementFile"]</label>
                 </div>
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["Save"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">@Localizer["BackToList"]</a>
 </div>
 
 @section Scripts {

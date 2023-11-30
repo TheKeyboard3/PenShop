@@ -1,6 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using PenShop.Models
+@using Microsoft.AspNetCore.Mvc.Localization
 
+@inject IViewLocalizer Localizer
 @inject UserManager<IdentityUser> UserManager
 
 @{
@@ -28,41 +30,55 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Products</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">@Localizer["Products"]</a>
                         </li>
+                        @if (user is Customer){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ProductOrder" asp-action="Index">@Localizer["ShoppingCart"]</a>
+                            </li>
+                        }
                         @if (user is not null){
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ProductOrder" asp-action="Index">Product orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customers</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">@Localizer["Orders"]</a>
                             </li>
                         }
                         @if (user is Administrator){
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="NibMaterial" asp-action="Index">Nib materials</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ProductOrder" asp-action="Index">@Localizer["ProductOrders"]</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Nib" asp-action="Index">Nibs</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="NibMaterial" asp-action="Index">@Localizer["NibMaterials"]</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Material" asp-action="Index">Materials</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Nib" asp-action="Index">@Localizer["Nibs"]</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="InkColour" asp-action="Index">Ink colours</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Material" asp-action="Index">@Localizer["Materials"]</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="CartridgeStandard" asp-action="Index">Cartridge standards</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="InkColour" asp-action="Index">@Localizer["InkColours"]</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Administrator" asp-action="Index">Administrators</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="CartridgeStandard" asp-action="Index">@Localizer["CartridgeStandard"]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">@Localizer["Customers"]</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Administrator" asp-action="Index">@Localizer["Administrators"]</a>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li>
+                            <form asp-action="ChangeLanguage" asp-controller="Language" class="form-inline">
+                                <select name="lang" class="form-select text-dark">
+                                    <option disabled selected>@Localizer["ChooseLanguage"]</option>
+                                    <option value="uk">Українська</option>
+                                    <option value="en">English</option>
+                                </select>
+                                <input type="submit" name="submit" value="@Localizer["ChooseLanguage2"]" class="btn btn-primary text-dark">
+                            </form>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -78,7 +94,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - web
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -1,15 +1,18 @@
 @model IEnumerable<int>
 
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = @Localizer["Products"];
 }
 
-<h1>Products</h1>
+<h1>@Localizer["Products"]</h1>
 
 <p>
-    <a asp-controller="Pen" asp-action="Index">Pens</a>
-    <a asp-controller="Ink" asp-action="Index">Ink</a>
-    <a asp-controller="Accessory" asp-action="Index">Accessories</a>
+    <a asp-controller="Pen" asp-action="Index">@Localizer["Pens"]</a>
+    <a asp-controller="Ink" asp-action="Index">@Localizer["Ink"]</a>
+    <a asp-controller="Accessory" asp-action="Index">@Localizer["Accessories"]</a>
 </p>
 <div class="container">
     <div class="row">
