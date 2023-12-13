@@ -9,7 +9,6 @@ public abstract class Product
 {
     public int Id { get; set; }
     [Required]
-    [DataType (DataType.Currency)]
     [Range(1, 50000)]
     [Display(Name = "Price")]
     public virtual float Price { get; set; }

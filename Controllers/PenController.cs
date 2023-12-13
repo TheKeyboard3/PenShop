@@ -27,7 +27,28 @@ namespace PenShop.Controllers
         // GET: Pen
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Pen.Select(x => x.Id).ToListAsync());
+            if(_context.Pen is null)
+                return Problem("Entity set 'PenShopContext.Pen' is null.");
+
+            ViewData["Products"] = await _context.Pen.Select(x => x.Id).ToListAsync();
+            ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
+            return View(new PenFilters());
+        }
+
+        // POST: Pen
+        [HttpPost]
+        public IActionResult Index(PenFilters penFilters)
+        {
+            if(_context.Pen is null)
+                return Problem("Entity set 'PenShopContext.Pen' is null.");
+
+            ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.Pen.AsEnumerable().Where(x => penFilters.MatchPen(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(penFilters);
         }
 
         // GET: Pen/Details/5

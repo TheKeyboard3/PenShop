@@ -24,7 +24,28 @@ namespace PenShop.Controllers
         // GET: RollerballPen
         public async Task<IActionResult> Index()
         {
-            return View(await _context.RollerballPen.Select(x => x.Id).ToListAsync());
+            if(_context.RollerballPen is null)
+                return Problem("Entity set 'PenShopContext.RollerballPen' is null.");
+
+            ViewData["Products"] = await _context.RollerballPen.Select(x => x.Id).ToListAsync();
+            ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
+            return View(new PenFilters());
+        }
+
+        // POST: RollerballPen
+        [HttpPost]
+        public IActionResult Index(PenFilters penFilters)
+        {
+            if(_context.RollerballPen is null)
+                return Problem("Entity set 'PenShopContext.RollerballPen' is null.");
+
+            ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.RollerballPen.AsEnumerable().Where(x => penFilters.MatchPen(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(penFilters);
         }
 
         // GET: RollerballPen/Details/5

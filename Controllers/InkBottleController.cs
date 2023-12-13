@@ -24,7 +24,26 @@ namespace PenShop.Controllers
         // GET: InkBottle
         public async Task<IActionResult> Index()
         {
-            return View(await _context.InkBottle.Select(x => x.Id).ToListAsync());
+            if(_context.InkBottle is null)
+                return Problem("Entity set 'PenShopContext.InkBottle' is null.");
+
+            ViewData["Products"] = await _context.InkBottle.Select(x => x.Id).ToListAsync();
+            return View(new InkFilters());
+        }
+
+        // POST: InkBottle
+        [HttpPost]
+        public IActionResult Index(InkFilters inkFilters)
+        {
+            if(_context.InkBottle is null)
+                return Problem("Entity set 'PenShopContext.InkBottle' is null.");
+
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.InkBottle.AsEnumerable().Where(x => inkFilters.MatchInk(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(inkFilters);
         }
 
         // GET: InkBottle/Details/5
@@ -92,6 +111,7 @@ namespace PenShop.Controllers
         }
 
         // GET: InkBottle/Create
+        [Authorize(Policy = "Administrator")]
         public IActionResult Create()
         {
             ViewData["ColourId"] = new SelectList(_context.InkColour, nameof(InkColour.Id), nameof(InkColour.Name));

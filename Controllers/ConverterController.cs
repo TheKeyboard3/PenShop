@@ -24,7 +24,28 @@ namespace PenShop.Controllers
         // GET: Converter
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Converter.Select(x => x.Id).ToListAsync());
+            if(_context.Converter is null)
+                return Problem("Entity set 'PenShopContext.Converter' is null.");
+
+            ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
+            ViewData["Products"] = await _context.Converter.Select(x => x.Id).ToListAsync();
+            return View(new ConverterFilters());
+        }
+
+        // POST: Converter
+        [HttpPost]
+        public IActionResult Index(ConverterFilters converterFilters)
+        {
+            if(_context.Converter is null)
+                return Problem("Entity set 'PenShopContext.Converter' is null.");
+
+            ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.Converter.AsEnumerable().Where(x => converterFilters.MatchConverter(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(converterFilters);
         }
 
         // GET: Converter/Details/5

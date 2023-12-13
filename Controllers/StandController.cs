@@ -24,7 +24,26 @@ namespace PenShop.Controllers
         // GET: Stand
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Stand.Select(x => x.Id).ToListAsync());
+            if(_context.Stand is null)
+                return Problem("Entity set 'PenShopContext.Stand' is null.");
+
+            ViewData["Products"] = await _context.Stand.Select(x => x.Id).ToListAsync();
+            return View(new AccessoryFilters());
+        }
+
+        // POST: Stand
+        [HttpPost]
+        public IActionResult Index(AccessoryFilters accessoryFilters)
+        {
+            if(_context.Stand is null)
+                return Problem("Entity set 'PenShopContext.Stand' is null.");
+
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.Stand.AsEnumerable().Where(x => accessoryFilters.Match(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(accessoryFilters);
         }
 
         // GET: Stand/Details/5

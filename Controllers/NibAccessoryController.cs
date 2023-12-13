@@ -24,7 +24,26 @@ namespace PenShop.Controllers
         // GET: NibAccessory
         public async Task<IActionResult> Index()
         {
-            return View(await _context.NibAccessory.Select(x => x.Id).ToListAsync());
+            if(_context.NibAccessory is null)
+                return Problem("Entity set 'PenShopContext.NibAccessory' is null.");
+
+            ViewData["Products"] = await _context.NibAccessory.Select(x => x.Id).ToListAsync();
+            return View(new AccessoryFilters());
+        }
+
+        // POST: NibAccessory
+        [HttpPost]
+        public IActionResult Index(AccessoryFilters accessoryFilters)
+        {
+            if(_context.NibAccessory is null)
+                return Problem("Entity set 'PenShopContext.NibAccessory' is null.");
+
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.NibAccessory.AsEnumerable().Where(x => accessoryFilters.Match(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(accessoryFilters);
         }
 
         // GET: NibAccessory/Details/5

@@ -89,8 +89,9 @@ namespace PenShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CustomerId,Date,ShippingAddress")] Order order)
+        public async Task<IActionResult> Create([Bind("Id,CustomerId,ShippingAddress")] Order order)
         {
+            order.Date = DateTime.Now;
             var user = GetUser();
             if (user is null || order.CustomerId != user.Id && user is not Administrator)
             {

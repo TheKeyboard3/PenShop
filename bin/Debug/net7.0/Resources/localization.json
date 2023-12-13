@@ -37,7 +37,7 @@
     },
     "CartridgeStandard": {
         "Values": {
-            "en": "Cartridge іtandard",
+            "en": "Cartridge standard",
             "uk": "Стандарт картриджів",
         }
     },
@@ -391,7 +391,7 @@
     },
     "CartridgeStandards": {
         "Values": {
-            "en": "Cartridge іtandards",
+            "en": "Cartridge standards",
             "uk": "Стандарти картриджів",
         }
     },
@@ -1215,6 +1215,30 @@
         "Values": {
             "en": "Choose a language",
             "uk": "Обрати мову",
+        }
+    },
+    "From": {
+        "Values": {
+            "en": "From",
+            "uk": "Від",
+        }
+    },
+    "To": {
+        "Values": {
+            "en": "To",
+            "uk": "До",
+        }
+    },
+    "Filters": {
+        "Values": {
+            "en": "Filters",
+            "uk": "Фільтри",
+        }
+    },
+    "Filter": {
+        "Values": {
+            "en": "Filter",
+            "uk": "Фільтрувати",
         }
     },
 }

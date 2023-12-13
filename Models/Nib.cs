@@ -20,7 +20,6 @@ public class Nib
     [Display(Name = "TipDiameter")]
     public float TipDiameter{ get; set; }
     [Required]
-    [DataType (DataType.Currency)]
     [Range(1,10000)]
     [Display(Name = "Price")]
     public float Price{ get; set; }

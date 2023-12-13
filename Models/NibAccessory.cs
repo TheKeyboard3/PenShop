@@ -10,7 +10,6 @@ public class NibAccessory : Accessory
     public int NibId{ get; set; }
     [Display(Name = "Nib")]
     public virtual Nib? Nib{ get; set; }
-    [DataType (DataType.Currency)]
     [Range(1, double.PositiveInfinity)]
     [Display(Name = "Price")]
     public override float Price{

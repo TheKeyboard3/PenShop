@@ -32,9 +32,26 @@ namespace PenShop.Controllers
         // GET: Accessory
         public async Task<IActionResult> Index()
         {
-              return _context.Accessory != null ? 
-                          View(await _context.Accessory.Select(x => x.Id).ToListAsync()) :
-                          Problem("Entity set 'PenShopContext.Accessory' is null.");
+            if(_context.Accessory is null)
+                return Problem("Entity set 'PenShopContext.Accessory' is null.");
+
+            ViewData["Products"] = await _context.Accessory.Select(x => x.Id).ToListAsync();
+            return View(new AccessoryFilters());
+        }
+
+        // POST: Accessory
+        [HttpPost]
+        public IActionResult Index(AccessoryFilters accessoryFilters)
+        {
+            if(_context.Accessory is null)
+                return Problem("Entity set 'PenShopContext.Accessory' is null.");
+
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.Accessory.AsEnumerable().Where(x => accessoryFilters.Match(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(accessoryFilters);
         }
 
         // GET: Accessory/Details/5

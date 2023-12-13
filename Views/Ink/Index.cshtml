@@ -1,4 +1,4 @@
-@model IEnumerable<int>
+@model InkFilters
 
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
@@ -14,9 +14,42 @@
     <a asp-controller="InkCartridge" asp-action="Index">@Localizer["InkCartridges"]</a>
     <a asp-controller="InkBottle" asp-action="Index">@Localizer["InkBottles"]</a>
 </p>
+
+<h4>@Localizer["Filters"]</h4>
+<div class="container">
+<form enctype="multipart/form-data" asp-action="Index">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="form-group col-xl-3">
+            <label asp-for="Price" class="control-label"></label><br>
+            <label asp-for="Price.Min" class="control-label"></label>
+            <input asp-for="Price.Min" class="form-control" />
+            <span asp-validation-for="Price.Min" class="text-danger"></span><br>
+            <label asp-for="Price.Max" class="control-label"></label>
+            <input asp-for="Price.Max" class="form-control" />
+            <span asp-validation-for="Price.Max" class="text-danger"></span><br>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group col-xl-3">
+            <label asp-for="Capacity" class="control-label"></label><br>
+            <label asp-for="Capacity.Min" class="control-label"></label>
+            <input asp-for="Capacity.Min" class="form-control" />
+            <span asp-validation-for="Capacity.Min" class="text-danger"></span><br>
+            <label asp-for="Capacity.Max" class="control-label"></label>
+            <input asp-for="Capacity.Max" class="form-control" />
+            <span asp-validation-for="Capacity.Max" class="text-danger"></span><br>
+            <span asp-validation-for="Capacity" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="@Localizer["Filter"]" class="btn btn-primary" />
+    </div>
+</form>
+</div>
+
 <div class="container">
     <div class="row">
-        @foreach (var item in Model) {
+        @foreach (var item in (IEnumerable<int>)ViewData["Products"]) {
             @Html.RenderAction("ProductCard", new {id = item});
         }
     </div>

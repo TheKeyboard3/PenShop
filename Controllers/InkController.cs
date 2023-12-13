@@ -27,7 +27,26 @@ namespace PenShop.Controllers
         // GET: Ink
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Ink.Select(x => x.Id).ToListAsync());
+            if(_context.Ink is null)
+                return Problem("Entity set 'PenShopContext.Ink' is null.");
+
+            ViewData["Products"] = await _context.Ink.Select(x => x.Id).ToListAsync();
+            return View(new InkFilters());
+        }
+
+        // POST: Ink
+        [HttpPost]
+        public IActionResult Index(InkFilters inkFilters)
+        {
+            if(_context.Ink is null)
+                return Problem("Entity set 'PenShopContext.Ink' is null.");
+
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.Ink.AsEnumerable().Where(x => inkFilters.MatchInk(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(inkFilters);
         }
 
         // GET: Ink/Details/5

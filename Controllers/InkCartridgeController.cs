@@ -24,7 +24,28 @@ namespace PenShop.Controllers
         // GET: InkCartridge
         public async Task<IActionResult> Index()
         {
-            return View(await _context.InkCartridge.Select(x => x.Id).ToListAsync());
+            if(_context.InkCartridge is null)
+                return Problem("Entity set 'PenShopContext.InkCartridge' is null.");
+
+            ViewData["Products"] = await _context.InkCartridge.Select(x => x.Id).ToListAsync();
+            ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
+            return View(new InkCartridgeFilters());
+        }
+
+        // POST: InkCartridge
+        [HttpPost]
+        public IActionResult Index(InkCartridgeFilters inkCartridgeFilters)
+        {
+            if(_context.InkCartridge is null)
+                return Problem("Entity set 'PenShopContext.InkCartridge' is null.");
+
+            ViewData["CartridgeStandardId"] = new SelectList(_context.CartridgeStandard, nameof(CartridgeStandard.Id), nameof(CartridgeStandard.Name));
+            if (ModelState.IsValid)
+                ViewData["Products"] = _context.InkCartridge.AsEnumerable().Where(x => inkCartridgeFilters.MatchInkCartridge(x)).Select(x => x.Id).ToList();
+            else
+                ViewData["Products"] = new List<int>();
+
+            return View(inkCartridgeFilters);
         }
 
         // GET: InkCartridge/Details/5
